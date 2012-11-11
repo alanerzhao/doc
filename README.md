@@ -161,7 +161,7 @@ var data = {
 ### Handlebar的注释（comments）
 Handlebars也可以使用注释写法如下
 ```js
-{{! 这里是Handlebars的注释格式 }}
+{{! handlebars comments }}
 ```
 ### Handlebars的访问（Path）
 
