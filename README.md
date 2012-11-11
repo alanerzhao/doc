@@ -1,30 +1,41 @@
 handlebar 文档
-========
+=============
 # 介绍
+Handlebars是JavaScript一个语义模板库，通过对view和data的分离来快速构建Web模板。它采用"Logic-less template"（无逻辑模版）的思路，在加载时被预编译，而不是到了客户端执行到代码时再去编译，
+这样可以保证模板加载和运行的速度。Handlebars兼容Mustache，你可以在Handlebars中导入Mustache模板。
 
-Handlebars是JavaScript一个语义模板库，通过对view和data的分离来快速构建Web模板。它采用"Logic-less template"（无逻辑模版）的思路，在加载时被预编译，而不是到了客户端执行到代码时再去编译，这样可以保证模板加载和运行的速度。Handlebars兼容Mustache，你可以在Handlebars中导入Mustache模板。
+#使用与安装
 Handlebars的安装非常简单，你只需要从Github下载最新版本，你也可访问下面网址获取最新信息：http://handlebarsjs.com/。
 目前handlebars.js已经被许多项目广泛使用了，handlebars是一个纯JS库，因此你可以像使用其他JS脚本一样用script标签来包含handlebars.js
-
-    <script type="text/javascript" src="script/handlebars-1.0.0.beta.6.js"></script>
-
-* Handlebars expressions(语法)是handlebars模板中最基本的单元，使用方法是加两个花括号{{value}}, handlebars模板会自动匹配相应的数值，对象甚至是函数。
+```   
+<script type="text/javascript" src=".js/handlebars.js"></script>
+```
+基本语法
+-----
+Handlebars expressions 是handlebars模板中最基本的单元，使用方法是加两个花括号{{value}}, handlebars模板会自动匹配相应的数值，对象甚至是函数。
 例如：
+```html
 <div class="demo">
     <h1>{{name}}</h1>
     <p>{{content}}</p>
 </div>
-
-提供一个模板嵌入在script标签里面
+```
+你可以单独建立一个模板,ID（或者class）和type很重要，因为你要用他们来获取模板内容
 例如：
+```
 <script id="tpl" type="text/x-handlebars-template">
     <div class="demo">
         <h1>{{title}}</h1>
-        <p>{{content}}</p>
+        <p>{{content.title}}</p>
     </div>
 </script>
+```
+handlebars会根据上下文来自动对表达式进行匹配，如果匹配项是个变量，则会输出变量的值，如果匹配项是个函数，则函数会被调用。
+如果没找到匹配项，则没有输出。表达式也支持点操作符，因此你可以使用{{content.title}}这样的形式来调用嵌套的值或者方法，
+handlebars会根据当前上下文输出content变量的title属性的值。
 
-使用Handlebars.compile()方法来预编译模板(这是一套规则)
+在JavaScript中，使用Handlebars.compile()方法来预编译模板
+例如：(这是一套规则)
     //用jquery获取模板
     var tpl   =  $("#tpl").html();
     //原生方法
@@ -37,188 +48,162 @@ Handlebars的安装非常简单，你只需要从Github下载最新版本，你�
     var html = template(context);
     //输入模板
     $(body).html(html);
-Handlebar提供的一些语法
 
-块语法（Block helper）
-each block helper
+Handlebar的表达式
+Block表达式
+有时候当你需要对某条表达式进行更深入的操作时，Blocks就派上用场了，在Handlebars中，你可以在表达式后面跟随一个#号来表示Blocks，然后通过{{/表达式}}来结束Blocks。
+如果当前的表达式是一个数组，则Handlebars会“自动展开数组”，并将Blocks的上下文设为数组中的项目，让我们来看看下面的例子：
+例如：
+<ul>
+{{#programme}}
+    <li>{{language}}</li>
+{{/programme}}
+</ul>
+有以下json数据
+{
+  programme: [
+    {language: "JavaScript"},
+    {language: "HTML"},
+    {language: "CSS"}
+  ]
+}
+编译模板代码同上……
+上面的代码会自动匹配people数据并展开数据，渲染DOM后就是这样的
+<ul>
+  <li>JavaScript</li>
+  <li>HTML</li>
+  <li>CSS</li>
+</ul>
+
+Handlebars的内置块表达式（Block helper）
+1.each block helper
 你可以使用内置的each helper遍历列表块内容，用this来引用遍历的元素
+例如：
 <ul>
     {{#each name}}
         <li>{{this}}</li>
     {{/each}}
 </ul>
-对应适用的json格式
+对应适用的json数据
 {
-    name: [
-    "html",
-    "css",
-    "javascript"
-    ]
+    name: ["html","css","javascript"]
 };
+这里的this指的是数组里的每一项元素，和上面的Block很像，但原理是不一样的这里的name是数组，
+而内置的each就是为了遍历数组用的，更复杂的数据也同样适用，一定是数组就好。
+
+2.if、else block helper
+Handlebars提供了{{if}} helper 你可以指定条件渲染dom，如果它的参数返回false，undefined, null, "" 或者 [] (a "falsy" value),
+Handlebar将不会渲染DOM，如果存在{{else}}则执行{{else}}后面的渲染
 例如：
-   <script id="demo" type="x-handlebars-template">
-        <ul>
-        <!--遍历data下的每个元素-->
-        {{#each data}}
-            <li>{{this}}</li>
-        {{/each}}
-        </ul>
-    </script>
-    <script type="text/javascript">
-        var tpl = $('#demo').html();
-        var dis = Handlebars.compile(tpl);
-        //检索当前的数组元素在每个循环
-        //this指当前数组
-$('body').html(dis({data:["dada","asdasd","asdasdasd"]}))
-        //传入json通过json属性渲染DOM
-    </script>
-更复杂的数据也同样适用，一定是数组就好
-例如：
- <script id="demo" type="x-handlebars-template">
-<table>
-   <tr>
-      <th>Band Name</th>
-      <th>Date</th>
-      <th>Album Name</th>
-   </tr>
-   {{#each Bands}}
-      <tr>
-         <td>{{Name}}</td>
-         <td>{{Date}}</td>
-         <td>{{Albums.0.Name}}</td>
-      </tr>
-   {{/each}}
-</table>
-    </script>
-    <script type="text/javascript">
-        var data = { 
-    Bands : [
-   {
-      Name : "Band",
-      Date : "Aug 14th, 2012",
-      Albums : [
-         {
-            Name : "Generic Name"
-         },
-         {
-            Name : "Something Else!!"
-         }
-      ]
-   },
-   {
-      Name : "Other Guys",
-      Date : "Aug 22nd, 2012",
-      Albums : [
-         {
-            Name : "Album One"
-         }
-      ]
-   }
-    ]
+{{#if list}}
+<ul id="list">
+    {{#each list}}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{else}}
+    <p>{{error}}</p>
+{{/if}}
+对应适用json数据
+var data = {
+    info:['HTML5','CSS3',"WebGL"],
+    "error":"数据取出错误"
 }
-console.log(data);
-        var source = document.getElementById("demo").innerHTML;
-        var tpl =Handlebars.compile(source);
-        $("body").html(tpl(data));
-    </script>
-在Handlebars中，你甚至可以访问嵌套属性，如上面的例子(Albums.0.Name),值得注意的是，除了使用点号来访问嵌套属性,
-你也可以使用“ .. / ”来访问父的属性
-if、else block helper
-Handlebars提供了if helper 你可以指定条件渲染dom
-如果它的参数返回false，undefined, null, "" 或者 [] (a "falsy" value),Handlebar将不会渲染DOM
-如果存在else则执行else后面的渲染
+这里{{if}}判断是否存在list数组，如果存在则遍历list，如果不存在输出错误信息
+
+3.unless block helper
+这个表达式是反向的if语法也就是当判断的值为false时他会渲染DOM
 例如：
-<script id="demo" type="x-handlebars-template">
-          {{#if list}}
-        <ul id="list">
-            {{#each list}}
-                <li>{{this}}</li>
-            {{/each}}
-        </ul>
-        {{else}}
-            <p>{{error}}</p>
-        {{/if}}
-    </script>
-    <script type="text/javascript">
-        var data = {
-            list1:['今天，天气不错','在家里学习Handlebars',"体验让我感觉身体不舒服"],
-            "error":"数据取出错误"
-        }
-        var source = document.getElementById("demo").innerHTML;
-        var tpl =Handlebars.compile(source);
-        $("body").html(tpl(data));
+{{#unless data}}
+<ul id="list">
+    {{#each list}}
+        <li>{{this}}</li>
+    {{/each}}
+</ul>
+{{else}}
+    <p>{{error}}</p>
+{{/unless}}
+4.with block helper
+一般情况下，Handlebars模板会在编译的阶段的时候进行context传递和赋值。
+使用with的方法，我们可以将context转移到数据的一个section里面（如果你的数据包含section）。
+这个方法在操作复杂的template时候非常有用。
+<div class="entry">
+  <h1>{{title}}</h1>
+
+  {{#with author}}
+  <h2>By {{firstName}} {{lastName}}</h2>
+  {{/with}}
+</div>
+对应适用json数据
+{
+  title: "My first post!",
+  author: {
+    firstName: "Charles",
+    lastName: "Jolley"
+  }
+}
+Handlebar的注释
 Handlebars也可以使用注释写法如下
-{{! 逻辑data }}
-
-unless block helper
-这个语法是反向的if语法也就是当判断的值为false时他会呈现DOM
-例如：
-<script id="demo" type="x-handlebars-template">
-        {{#unless data}}
-        <ul id="list">
-            {{#each list}}
-                <li>{{this}}</li>
-            {{/each}}
-        </ul>
-        {{else}}
-            <p>{{error}}</p>
-        {{/unless}}
-    </script>
-    <script type="text/javascript">
-        var data = {
-            list:['今天，天气不错','在家里学习Handlebars',"体验让我感觉身体不舒服"],
-            "error":"数据取出错误"
-        }
-        var source = document.getElementById("demo").innerHTML;
-        var tpl =Handlebars.compile(source);
-        $("body").html(tpl(data));
-    </script>
-with block helper
- <script id="demo" type="x-handlebars-template">
-        {{#if list}}
-        <ul id="list">
-            {{#each list}}
-                <li>{{this}}</li>
-            {{/each}}
-        </ul>
-        {{else}}
-            {{#with error}}
-            <p>{{this}}</p>
-            {{/with}}
-        {{/if}}
-    </script>
-    <script type="text/javascript">
-        var data = {
-            list1:['今天，天气不错','在家里学习Handlebars',"体验让我感觉身体不舒服"],
-            error:["数据取出错误","网络错误"]
-        }
-        var source = document.getElementById("demo").innerHTML;
-        var tpl =Handlebars.compile(source);
-        $("body").html(tpl(data));
-    </script>
+{{! 这里是Handlebars的注释格式 }}
 Handlebars Path
-Handlebar支持路径和mustache
-Handlebar,还支持嵌套的路径，使得能够查找嵌套低于当前上下文的属性
-可以通过.来访问属性也可以使用../来访问路径
-  例如
-<h1>{{info.data}}</h1>
 
- <script id="demo" type="x-handlebars-template">
-        {{#with person}}
-        <h1>{{../company.name}}</h1>
-        {{/with}}
-    </script>
-    <script type="text/javascript">
-       var data = {"person": { "name": "Alan" }, company: {"name": "Rad, Inc." } };
-        var source = document.getElementById("demo").innerHTML;
-        var tpl =Handlebars.compile(source);
-        $("body").html(tpl(data));
-    </script>
-Helpers
+Handlebar支持路径和mustache,Handlebar还支持嵌套的路径，使得能够查找嵌套低于当前s上下文的属性
+可以通过"."来访问属性也可以使用"../",来访问父级属性。
+例如:（使用.访问的例子）
+<h1>{{author.id}}</h1>
+对应json数据
+ {
+  title: "My First Blog Post!",
+  author: {
+    id: 47,
+    name: "Yehuda Katz"
+  },
+  body: "My first post. Wheeeee!"
+  };
+
+例如：（使用"../"访问）
+{{#with person}}
+    <h1>{{../company.name}}</h1>
+{{/with}}
+对应适用json数据
+{
+    "person":
+    { "name": "Alan" },
+        company:
+    {"name": "Rad, Inc." }
+};
+
 自定义helper
-Handlebars.registerHelper 方法
+Handlebars，可以从任何上下文可以访问在一个模板，你可以使用"Handlebars.registerHelper"方法来
+注册一个helper。
 
 
+调试技巧
+把下面一段"debug helper"加载到你的JavaScript代码里
+然后在模板文件里通过"{{debug}} {{debug someValue}}"方便调试数据
+Handlebars.registerHelper("debug", function(optionalValue) {
+  console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
+
+handlebars的jquery插件
+(function($) {
+    var compiled = {};
+    $.fn.handlebars = function(template, data) {
+        if (template instanceof jQuery) {
+            template = $(template).html();
+        }
+    compiled[template] = Handlebars.compile(template);
+    this.html(compiled[template](data));
+    };
+})(jQuery);
+$('#content').handlebars($('#template'), { name: "Alan" });
 
 
 
