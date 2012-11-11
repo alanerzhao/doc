@@ -5,9 +5,9 @@ handlebar 文档
 这样可以保证模板加载和运行的速度。Handlebars兼容Mustache，你可以在Handlebars中导入Mustache模板。
 
 ## 使用与安装
-Handlebars的安装非常简单，你只需要从Github下载最新版本，你也可访问下面网址获取最新信息：http://handlebarsjs.com/。
+Handlebars的安装非常简单，你只需要从Github下载最新版本，你也可访问下面网址获取最新信息：http://handlebarsjs.com。
 目前handlebars.js已经被许多项目广泛使用了，handlebars是一个纯JS库，因此你可以像使用其他JS脚本一样用script标签来包含handlebars.js
-```   
+```html  
 <script type="text/javascript" src=".js/handlebars.js"></script>
 ```
 ## 基本语法
@@ -21,7 +21,7 @@ Handlebars expressions 是handlebars模板中最基本的单元，使用方法�
 ```
 你可以单独建立一个模板,ID（或者class）和type很重要，因为你要用他们来获取模板内容
 例如：
-```
+```html
 <script id="tpl" type="text/x-handlebars-template">
 <div class="demo">
         <h1>{{title}}</h1>
@@ -51,8 +51,8 @@ handlebars会根据当前上下文输出content变量的title属性的值。
 ```
 ## Handlebar的表达式
 ### Block表达式
-有时候当你需要对某条表达式进行更深入的操作时，Blocks就派上用场了，在Handlebars中，你可以在表达式后面跟随一个#号来表示Blocks，然后通过{{/表达式}}来结束Blocks。
-如果当前的表达式是一个数组，则Handlebars会“自动展开数组”，并将Blocks的上下文设为数组中的项目，让我们来看看下面的例子：
+有时候当你需要对某条表达式进行更深入的操作时，Blocks就派上用场了，在Handlebars中，你可以在表达式后面跟随一个#号来表示Blocks，然后通过```{{/表达式}}```来结束Blocks。
+如果当前的表达式是一个数组，则Handlebars会“自动展开数组”，并将Blocks的上下文设为数组中的元素。
 例如：
 ```html
 <ul>
@@ -80,10 +80,9 @@ handlebars会根据当前上下文输出content变量的title属性的值。
   <li>CSS</li>
 </ul>
 ```
-
 ## Handlebars的内置块表达式（Block helper）
 ### 1.each block helper
-你可以使用内置的each helper遍历列表块内容，用```this```来引用遍历的元素
+你可以使用内置的```{{#each}}``` helper遍历列表块内容，用```this```来引用遍历的元素
 例如：
 ```html
 <ul>
@@ -98,11 +97,11 @@ handlebars会根据当前上下文输出content变量的title属性的值。
     name: ["html","css","javascript"]
 };
 ```
-这里的```this```指的是数组里的每一项元素，和上面的Block很像，但原理是不一样的这里的name是数组，而内置的each就是为了遍历数组用的，更复杂的数据也同样适用，一定是数组就好。
+这里的```this```指的是数组里的每一项元素，和上面的Block很像，但原理是不一样的这里的name是数组，而内置的each就是为了遍历数组用的，更复杂的数据也同样适用。
 
 ### 2.if else block helper
-Handlebars提供了{{if}} helper 你可以指定条件渲染dom，如果它的参数返回```false，undefined, null, "" 或者 [] (a "falsy" value)```,
-Handlebar将不会渲染DOM，如果存在```{{else}}```则执行```{{else}}```后面的渲染
+``{{#if}}```就你使用JavaScript一样，你可以指定条件渲染DOM，如果它的参数返回```false，undefined, null, "" 或者 [] (a "falsy" value)```,
+Handlebar将不会渲染DOM，如果存在```{{#else}}```则执行```{{#else}}```后面的渲染
 例如：
 ```html
 {{#if list}}
@@ -122,10 +121,10 @@ var data = {
     "error":"数据取出错误"
 }
 ```
-这里```{{if}}```判断是否存在list数组，如果存在则遍历list，如果不存在输出错误信息
+这里```{{#if}}```判断是否存在list数组，如果存在则遍历list，如果不存在输出错误信息
 
 ### 3.unless block helper
-这个表达式是反向的if语法也就是当判断的值为```false```时他会渲染DOM
+```{{#unless}}```这个语法是反向的if语法也就是当判断的值为```false```时他会渲染DOM
 例如：
 ```html
 {{#unless data}}
@@ -139,7 +138,7 @@ var data = {
 {{/unless}}
 ```
 ### 4.with block helper
-一般情况下，Handlebars模板会在编译的阶段的时候进行context传递和赋值。使用with的方法，我们可以将context转移到数据的一个section里面（如果你的数据包含section）。
+```{{#with}}```一般情况下，Handlebars模板会在编译的阶段的时候进行context传递和赋值。使用with的方法，我们可以将context转移到数据的一个section里面（如果你的数据包含section）。
 这个方法在操作复杂的template时候非常有用。
 ```html
 <div class="entry">
@@ -229,14 +228,3 @@ Handlebars.registerHelper("debug", function(optionalValue) {
 })(jQuery);
 $('#content').handlebars($('#template'), { name: "Alan" });
 ```
-
-
-
-
-
-
-
-
-
-
-
