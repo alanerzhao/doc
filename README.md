@@ -100,7 +100,7 @@ handlebars会根据当前上下文输出content变量的title属性的值。
 这里的```this```指的是数组里的每一项元素，和上面的Block很像，但原理是不一样的这里的name是数组，而内置的each就是为了遍历数组用的，更复杂的数据也同样适用。
 
 ### 2.if else block helper
-``{{#if}}```就你使用JavaScript一样，你可以指定条件渲染DOM，如果它的参数返回```false，undefined, null, "" 或者 [] (a "falsy" value)```,
+```{{#if}}```就你使用JavaScript一样，你可以指定条件渲染DOM，如果它的参数返回```false，undefined, null, "" 或者 [] (a "falsy" value)```,
 Handlebar将不会渲染DOM，如果存在```{{#else}}```则执行```{{#else}}```后面的渲染
 例如：
 ```html
