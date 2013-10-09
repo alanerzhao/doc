@@ -20,19 +20,19 @@ a:hover { text-decoration:underline;}
 :focus{outline:none;}
 
 /*功能性CSS*/
-.mf-clear:after { content:'\0020';display:block;clear:both;height:0;}
-.mf-clear {zoom:1;}
+.fn-clear:after { content:'\0020';display:block;clear:both;height:0;}
+.fn-clear {zoom:1;}
 
 /*向左向右*/
-.mf-right{float:right;}
-.mf-left{float:left;}
+.fn-right{float:right;}
+.fn-left{float:left;}
 
 /*显示隐藏*/
-.mf-hide { display:none;}
-.mf-show { display:block;}
+.fn-hide { display:none;}
+.fn-show { display:block;}
 
-.mf-invisible {visibility:hidden;}
-.mf-affix {position:fixed;top:0;}
+.fn-invisible {visibility:hidden;}
+.fn-affix {position:fixed;top:0;}
 
 /*省略号*/
 .mf-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
