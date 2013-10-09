@@ -43,3 +43,106 @@ a:hover { text-decoration:underline;}
 /*强制文本换行*/
 .mf-wrap{word-wrap:break-word;word-break:break-all;}
 
+/*grid*/
+.grid_1 {
+    width: 25px;
+}
+.grid_2 {
+    width: 60px;
+}
+.grid_3 {
+    width: 95px;
+}
+.grid_4 {
+    width: 130px;
+}
+.grid_5 {
+    width: 165px;
+}
+.grid_6 {
+    width: 200px;
+}
+.grid_7 {
+    width: 235px;
+}
+.grid_8 {
+    width: 270px;
+}
+.grid_9 {
+    width: 305px;
+}
+.grid_10 {
+    width: 340px;
+}
+.grid_11 {
+    width: 375px;
+}
+.grid_12 {
+    width: 410px;
+}
+.grid_13 {
+    width: 445px;
+}
+.grid_14 {
+    width: 480px;
+}
+.grid_15 {
+    width: 515px;
+}
+.grid_16 {
+    width: 550px;
+}
+.grid_17 {
+    width: 585px;
+}
+.grid_18 {
+    width: 620px;
+}
+.grid_19 {
+    width: 655px;
+}
+.grid_20 {
+    width: 690px;
+}
+.grid_21 {
+    width: 725px;
+}
+.grid_22 {
+    width: 760px;
+}
+.grid_23 {
+    width: 795px;
+}
+.grid_24 {
+    width: 830px;
+}
+.grid_25 {
+    width: 865px;
+}
+.grid_26 {
+    width: 900px;
+}
+.grid_27 {
+    width: 935px;
+}
+.grid_28 {
+    width: 970px;
+}
+.grid {
+    margin: 0 0px 0 10px;
+    overflow: hidden;
+    float: left;
+    display: inline;
+}
+.container {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.row .row {
+    margin: 0 -0px 0 -10px;
+    width: auto;
+    display: inline-block;
+}
+
