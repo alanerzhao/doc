@@ -1,0 +1,18 @@
+/* Retset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{ font:12px/1.5 arial,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+table{ border-collapse:collapse;border-spacing:0;}
+ol,ul{ list-style:none;}
+fieldset,img{ border:0 none;}
+:focus { outline:0;}
+a{ text-decoration:none;color:#000;}
+a:hover { text-decoration:underline;color:#1c62b9;}
+
+.clearfix:after { content:'\0020';display:block;clear:both;height:0;}
+.clearfix {zoom:1;}
+.hide { display:none;}
+.show { display:block;}
+.ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.dis-in { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+
