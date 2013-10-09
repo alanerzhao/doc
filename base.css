@@ -6,13 +6,39 @@ table{ border-collapse:collapse;border-spacing:0;}
 ol,ul{ list-style:none;}
 fieldset,img{ border:0 none;}
 :focus { outline:0;}
-a{ text-decoration:none;color:#000;}
-a:hover { text-decoration:underline;color:#1c62b9;}
+a{ text-decoration:none;}
+a:hover { text-decoration:underline;}
+/* 高亮选中 */
+::-moz-selection {background:#08c;color:#fff;}
+::selection {background:#08c;color:#fff;}
 
-.clearfix:after { content:'\0020';display:block;clear:both;height:0;}
-.clearfix {zoom:1;}
-.hide { display:none;}
-.show { display:block;}
-.ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
-.dis-in { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+/* Placeholder Color */
+::-moz-placeholder {color: #aaa;}
+::-webkit-input-placeholder {color: #aaa;}
+::-ms-input-placeholder {color:#aaa;}
+:focus{outline:none;}
+
+/*功能性CSS*/
+.mf-clear:after { content:'\0020';display:block;clear:both;height:0;}
+.mf-clear {zoom:1;}
+
+/*向左向右*/
+.mf-right{float:right;}
+.mf-left{float:left;}
+
+/*显示隐藏*/
+.mf-hide { display:none;}
+.mf-show { display:block;}
+
+.mf-invisible {visibility:hidden;}
+.mf-affix {position:fixed;top:0;}
+
+/*省略号*/
+.mf-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+
+/*内联块*/
+.mf-inbl { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+
+/*强制文本换行*/
+.mf-wrap{word-wrap:break-word;word-break:break-all;}
 
