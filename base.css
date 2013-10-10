@@ -35,13 +35,13 @@ a:hover { text-decoration:underline;}
 .fn-affix {position:fixed;top:0;}
 
 /*省略号*/
-.mf-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.fn-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
 
 /*内联块*/
-.mf-inbl { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+.fn-inb { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
 
 /*强制文本换行*/
-.mf-wrap{word-wrap:break-word;word-break:break-all;}
+.fn-wrap { word-wrap:break-word;word-break:break-all;}
 
 /*grid*/
 .grid_1 {
