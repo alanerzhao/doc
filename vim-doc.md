@@ -4,9 +4,15 @@
  (搞不清模式的清况下，可以连续按esc键)
 
 ### 新建打开文件
-```  gvim file.txt ``` 
-```  edit foot.txt ``` 
-```  gvim one.c two.c ``` (** 同时编辑多个文件，默认会先打开第一个,:next则打开第二个**)
+* ```  gvim file.txt ``` 
+* ```  edit foot.txt ``` 
+* ```  gvim one.c two.c ``` (** 同时编辑多个文件，默认会先打开第一个,【:next :previous :last :first 则打开第二个** :wnext)
+* ``` args five.c six.c sever.h (编辑另一个文件列表)
+* ``` vim -R file ``` (只读文件打开)
+* ``` "fyy ``` (存入寄存器，寄存器粘贴"fp)
+* ``` gvim -M file ```
+* ``` saveas moove.c ``` (修改文件名)
+
 #### 普通模式移动光标
 ```  h j k l ``` 
 
@@ -87,7 +93,7 @@
 * ``` v ``` 进入可视模式 
 * ``` V ``` 选择一行
 * ``` o ``` (选择模式下按o来选择一端，还是另一端)
-*``` ctrl + q ``` 块选择
+*``` ctrl + q ``` 块选关闭所有窗口择
 
 #### 命令
 * ``` set ruler ```
@@ -96,9 +102,24 @@
 * ``` set backgroun=dark ```
 * ``` set hlsearch ```
 * ``` colorscheme evening ```
+* ``` args ``` (查看文件列表)
+* ``` set autowrite ``` (自动保存)
+* ``` write >> files (追加到文件)
+* ``` set modifiable  ``` (去掉保护)
+* ``` set write ```
+* ``` split ``` (分窗口,close关闭窗口：only关闭所有窗口 new 编辑一个新文件，接收计算例如3split demo.c)
+* ``` ctrl + w + "+" ``` (改变窗口大小)
+* ``` ctrl + w ``` (切换分割窗口，加入方向键 h j k l)
+* ``` vsplit ``` (垂直分割)
+* ``` ctrl + w + K ``` (移动窗口)
+* ``` qall ``` (关闭所有窗口)
+* ``` vertical diffsplit main.c ```
+* ``` tabedit files ``` (tab页)
 
 
------ end 47 page ------
+
+
+----- end 80 page ------
 
 
 
