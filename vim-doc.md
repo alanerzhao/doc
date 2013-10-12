@@ -7,7 +7,7 @@
 * ```  gvim file.txt ``` 
 * ```  edit foot.txt ``` 
 * ```  gvim one.c two.c ``` (** 同时编辑多个文件，默认会先打开第一个,【:next :previous :last :first 则打开第二个** :wnext)
-* ``` args five.c six.c sever.h (编辑另一个文件列表)
+* ``` args five.c six.c sever.h ``` (编辑另一个文件列表)
 * ``` vim -R file ``` (只读文件打开)
 * ``` "fyy ``` (存入寄存器，寄存器粘贴"fp)
 * ``` gvim -M file ```
@@ -104,7 +104,7 @@
 * ``` colorscheme evening ```
 * ``` args ``` (查看文件列表)
 * ``` set autowrite ``` (自动保存)
-* ``` write >> files (追加到文件)
+* ``` write >> files ``` (追加到文件)
 * ``` set modifiable  ``` (去掉保护)
 * ``` set write ```
 * ``` split ``` (分窗口,close关闭窗口：only关闭所有窗口 new 编辑一个新文件，接收计算例如3split demo.c)
