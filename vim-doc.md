@@ -115,7 +115,7 @@
 * ``` qall ``` (关闭所有窗口)
 * ``` vertical diffsplit main.c ```
 * ``` tabedit files ``` (tab页)
-
+* ``` set noscrollbind ``` (禁止分屏光标跟随)
 
 
 
