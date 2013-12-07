@@ -58,7 +58,7 @@ Git 总结分享
    再从代码库更新代码到本地时，如果出现冲突，git 会停止更新合并代码而且会提示你去解决冲突，  
    然后再断续那么这时你就应该去解决相关的冲突文件，然后再把文件加入到版本库里。
    
-   ```--rebase``` 的意思是让合并分支线更清晰，也就是所谓的一条。
+   ``` --rebase `` 的意思是让合并分支线更清晰，也就是所谓的一条。
    
      git pull --rebase  
      git add "bouth file"
@@ -88,16 +88,24 @@ Git 总结分享
       git fetch origin  //放弃本地修改，重新获取代码，你还要把hard指向指向所有的
       git reset --hard origin/master 本并将你本地主分支指向到它,如果不指向你的log信息不会变
     
-    利用标签还原版本，当你的项目开发的算做一个版本时使用村签比较合合
+    利用标签还原版本，当你的项目开发的算做一个版本时使用村签比较合适
+    git tag //查看标签
     git add tag -a v1.1 -m "mobile version 1.1"
     git reset v1.1
+    git tag v1.4-lw //轻量级标签
+    git tag -a v1.2 9fceb02 （commit id）//给已提交对象打标签
+    
     
   
 ### 如果建立分支后  怎么合并代码
+    分支应用场景，你在开发新功能，而这里有bug找你，你开发还没有完成，并不能全部提交，那么可以尝试分支
+    新建一个分支去解决问题。
     git checkout -b deve //新建分支
     git checkout master //切换分支
     git branch -d deve  //删除分支
     git push origin <branch> // 提交分支
+    git merge barnchname
+    
     
 ## 常用命令操作
 
@@ -115,7 +123,16 @@ Git 总结分享
     git remote -v
     有一点很重要，需要记住，fetch 命令只是将远端的数据拉到本地仓库，并不自动合并到当前工作分支，只有当你确实准备好了，才能手工合并。
     git remote show origin
-
+    git push origin --tags //把代标签的版本推送到服务器 默认不推荐标签
+    git rebase master
+    
+    ###git aliases
+    
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.st status
+    git config --global alias.last 'log -1 HEAD'
     
     
     
