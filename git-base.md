@@ -11,6 +11,7 @@ Git 总结分享
     git config --global user.email "youremail"
     git config --global color.ui auto //高亮
     git config --global core.editor vim
+    git config --global commit.template
 
 ### 权限配置  
 
@@ -96,6 +97,15 @@ Git 总结分享
     git help clone // 获取某个命令的帮助
     git status // 查看文件状态
     git log  // 查看提交历史
+    git add // 这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等）
+    git commit -a // 跳过暂缓区
+    git fetch //到远程仓库中拉取所有你本地仓库中还没有的数据
+    git rm
+    git rm --cached //只移除暂存区
+    git commit --amend // 撤消提交
+    git remote -v
+
+    
     
     
 ## 高级功能
@@ -105,3 +115,5 @@ Git 总结分享
 
 ## 相关资源
 ---
+
+![Alt text](http://git-scm.com/figures/18333fig0201-tn.png)
