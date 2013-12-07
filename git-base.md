@@ -5,7 +5,7 @@ Git 总结分享
 ---
 ### 基础配置
 
-首先下载完，需要进行一些常规配置，如：**Email** **User** 等。
+首先下载完，需要进行一些常规配置，如：**Email** 、**User** 等。
 
     git config --global user.name "yourname" 
     git config --global user.email "youremail"
@@ -14,7 +14,7 @@ Git 总结分享
 
 ### 权限配置  
 
-生成SSH密钥，因为需要和服务器通信,粘贴的时候要注册把** SSH== ** 后面的的邮箱删掉,
+生成SSH密钥，因为需要和服务器通信,粘贴的时候要注册把**SSH==** 后面的的邮箱删掉,
 
 密钥位置在C盘```user/alaner/.ssh ``` ```.pub```是公共密钥，私钥要保管好
 
