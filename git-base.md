@@ -5,7 +5,7 @@ Git 总结分享
 ---
 ### 基础配置
 
-首先下载完，需要进行一些常规配置，如：** Email** ** User ** 等。
+首先下载完，需要进行一些常规配置，如：**Email** **User** 等。
 
     git config --global user.name "yourname" 
     git config --global user.email "youremail"
