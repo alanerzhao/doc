@@ -139,7 +139,28 @@ Git 总结分享
 ## 高级功能
 ---
 ### 子模块
----
+   git submodule 
+
+        git submodule add 公用库名字
+        
+        .gitmodules记录了每个submodule的引用信息，知道在当前项目的位置以及仓库的所在
+        
+        克隆带有submodule的仓库
+        git clone ../repos/project1.git project1-b
+        
+        git submodule
+        前面带有-号告诉我们还没有检出
+        检出之后再更新一下
+        git submodule update
+        
+        cat .git/config
+        
+        
+        把远程仓库拉到本地子模块
+        git submodule add remote
+        
+        git submodule foreach git pull
+
 
 ## 相关资源
 ---
