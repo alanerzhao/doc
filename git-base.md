@@ -58,7 +58,7 @@ Git 总结分享
    再从代码库更新代码到本地时，如果出现冲突，git 会停止更新合并代码而且会提示你去解决冲突，  
    然后再断续那么这时你就应该去解决相关的冲突文件，然后再把文件加入到版本库里。
    
-   ``` --rebase `` 的意思是让合并分支线更清晰，也就是所谓的一条。
+   ```--rebase``` 的意思是让合并分支线更清晰，也就是所谓的一条。
    
      git pull --rebase  
      git add "bouth file"
@@ -166,3 +166,7 @@ Git 总结分享
 ---
 
 ![Alt text](http://git-scm.com/figures/18333fig0201-tn.png)
+
+![Alt text](http://git-scm.com/figures/18333fig0502-tn.png)
+
+![Alt text](http://git-scm.com/figures/18333fig0511-tn.png)
