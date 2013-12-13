@@ -1,0 +1,14 @@
+{
+  "name": "my-project-name",
+  "version": "0.1.0",
+  "author": "Your Name",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.1.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-livereload": "~0.1.3"
+  }
+}

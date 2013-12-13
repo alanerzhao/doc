@@ -116,6 +116,13 @@
 * ``` vertical diffsplit main.c ```
 * ``` tabedit files ``` (tab页)
 * ``` set noscrollbind ``` (禁止分屏光标跟随)
+* ``` e : $MYVIMRC
+* ``` buffers ``` 查看缓存区 buffer num 打开缓存文件
+
+
+:bn -- buffer列表中下一个 buffer
+:bp -- buffer列表中前一个 buffer
+:b# -- 你之前所在的前一个 buffer
 
 
 
