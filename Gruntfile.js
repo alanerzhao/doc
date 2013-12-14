@@ -15,21 +15,21 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			css: {
-				files: 'src/*.css',
+				files: 'src/**/*.css',
 				tasks: ['concat', 'cssmin'],
 				options: {
 					livereload: true,
 				}
 			},
 			js: {
-				files: 'src/*.js',
+				files: 'src/**/*.js',
 				tasks: ['concat', 'uglify'],
 				options: {
 					livereload: true,
 				}
 			},
 			sass: {
-				files: 'sass/*.scss',
+				files: 'src/**/*.scss',
 				tasks: ['sass'],
 				options: {
 					livereload: true,
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 		sass: {
 			dist: {
 				files: {
-					'sass/style.css': 'sass/*.scss',
+					'build/css/style.css': 'src/**/*.scss',
 				}
 			}
 		},
@@ -75,6 +75,7 @@ module.exports = function(grunt) {
 	// 默认任务
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', "watch:css", "watch:js"]);
 	grunt.registerTask('build', ['concat', 'cssmin']);
+	//监听css
 	grunt.registerTask("Wsass", ['sass', 'watch:sass'])
 }
 
