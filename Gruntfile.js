@@ -6,11 +6,11 @@ module.exports = function(grunt) {
 		concat: {
 			css: {
 				src: 'src/css/**.css',
-				dest: 'build/css/all.css'
+				dest: 'build/css/main.css'
 			},
 			js: {
 				src: 'src/js/**.js',
-				dest: 'build/js/all.js'
+				dest: 'build/js/main.js'
 			}
 		},
 		watch: {
@@ -30,11 +30,13 @@ module.exports = function(grunt) {
 			},
 			sass: {
 				files: 'src/**/*.scss',
-				tasks: ['sass'],
+				//如果有compass框架
+				tasks: ['sass', 'compass'],
 				options: {
 					livereload: true,
 				}
 			},
+			//监听所有文件
 			allWtach: {
 				files: '**',
 				options: {
@@ -42,6 +44,7 @@ module.exports = function(grunt) {
 				},
 			},
 		},
+		//sass
 		sass: {
 			dist: {
 				files: {
@@ -49,18 +52,28 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		compass: { // Task
+			dev: { // Another target
+				options: {
+					sassDir: 'src/sass',
+					cssDir: 'src/css',
+					environment: 'production',
+					outputStyle: 'expanded'
+				}
+			}
+		},
 		//压缩js
 		uglify: {
 			build: {
-				src: 'build/js/all.js',
-				dest: 'build/js/build.min.js'
+				src: 'build/js/main.js',
+				dest: 'build/js/main.min.js'
 			}
 		},
 		//压缩css
 		cssmin: {
 			build: {
-				src: 'build/css/all.css',
-				dest: 'build/css/build.min.css'
+				src: 'build/css/main.css',
+				dest: 'build/css/main.min.css'
 			}
 		},
 	});
@@ -70,12 +83,16 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认任务
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', "watch:css", "watch:js"]);
-	grunt.registerTask('build', ['concat', 'cssmin']);
+	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', "watch:css", "watch:js","watch:sass"]);
+	
+	//构建任务
+	grunt.registerTask('build', ['concat', 'cssmin', 'uglify']);
+	
 	//监听css
-	grunt.registerTask("Wsass", ['sass', 'watch:sass'])
+	grunt.registerTask("sass", ['sass', 'watch:sass']);
 }
 
