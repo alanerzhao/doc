@@ -28,12 +28,26 @@ module.exports = function(grunt) {
 					livereload: true,
 				}
 			},
+			sass: {
+				files: 'sass/*.scss',
+				tasks: ['sass'],
+				options: {
+					livereload: true,
+				}
+			},
 			allWtach: {
 				files: '**',
 				options: {
 					livereload: true,
 				},
 			},
+		},
+		sass: {
+			dist: {
+				files: {
+					'sass/style.css': 'sass/*.scss',
+				}
+			}
 		},
 		//压缩js
 		uglify: {
@@ -55,10 +69,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认任务
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', "watch:css", "watch:js"]);
 	grunt.registerTask('build', ['concat', 'cssmin']);
+	grunt.registerTask("Wsass", ['sass', 'watch:sass'])
 }
 
