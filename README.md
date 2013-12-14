@@ -17,6 +17,7 @@ CSS & handlebars.js doc
  * 把所需模块放入当前目录 ```node_modules```,```Gruntfile.js```,```package.json```  
  * 执行``` grunt ``` 则监听所有文件的变化
 
+### 新增sass js css 压缩优化
 
 
  f5刷新工具
