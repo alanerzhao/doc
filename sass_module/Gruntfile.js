@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 		//合并文件
 		concat: {
 			css: {
-				src: 'src/css/**.css',
+				src: 'build/css/**.css',
 				dest: 'build/css/main.css'
 			},
 			js: {
@@ -13,10 +13,21 @@ module.exports = function(grunt) {
 				dest: 'build/js/main.js'
 			}
 		},
+		connect: {
+			server: {
+				options: {
+					port: 4000,
+					base: '.', //当前目录
+					hostname: '127.0.0.1',
+					livereload:true,
+					open:'http://127.0.0.1:4000/index.htm',
+				}
+			}
+		},
 		watch: {
 			css: {
 				files: 'src/**/*.css',
-				tasks: ['concat', 'cssmin'],
+				tasks: ['connect', 'concat', 'cssmin'],
 				options: {
 					livereload: true,
 				}
@@ -38,7 +49,8 @@ module.exports = function(grunt) {
 			},
 			//监听所有文件
 			allWtach: {
-				files: '**',
+				files: ['src/**/*.scss','src/**/*.js'],
+				tasks:['compass:dev','concat'],
 				options: {
 					livereload: true,
 				},
@@ -48,8 +60,9 @@ module.exports = function(grunt) {
 		sass: {
 			dist: {
 				files: {
-					'build/css/style.css': 'src/**/*.scss',
-				}
+					'build/css/main.css': 'src/**/*.scss',
+				},
+				tasks: ['compass:dev'],
 			},
 		},
 		compass: { // Task
@@ -83,6 +96,7 @@ module.exports = function(grunt) {
 				dest: 'build/css/main.min.css'
 			}
 		},
+
 	});
 
 	// 加载提供"uglify"任务的插件
@@ -91,16 +105,20 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	//node服务器
+	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认任务
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', "watch:css", "watch:js", "watch:sass"]);
+	grunt.registerTask('default', ['compass','concat']);
 
-	//构建任务
+	//优化任务
 	grunt.registerTask('build', ['concat', 'cssmin', 'uglify']);
 
-	//监听css
-	grunt.registerTask("Wsass", ['watch:sass']);
+	//开启一个node服务器监听css js 
+	grunt.registerTask('server', ['connect','watch:allWtach']);
 
+	//监听sass
+	grunt.registerTask('listen', ['connect','watch:sass']);
 }
 
