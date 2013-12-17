@@ -1,7 +1,24 @@
+/*
+* 初始化项目 执行``` grunt ```
+* 优化项目 执行 ```  grunt build ```
+* 开发测试 执行 ``` grunt server ``` 
+* 单独监听sass 执行 ``` grunt listen ```
+* */
 module.exports = function(grunt) {
 	// 项目配置
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		//复制文件
+		copy: {
+			main: {
+				expand: true,
+				cwd: 'src/',
+				src: '**/*.js',
+				dest: 'build/js',
+				flatten: true,
+				filter: 'isFile',
+			},
+		},
 		//合并文件
 		concat: {
 			css: {
@@ -9,7 +26,7 @@ module.exports = function(grunt) {
 				dest: 'build/css/main.css'
 			},
 			js: {
-				src: 'src/js/**.js',
+				src: 'build/js/**.js',
 				dest: 'build/js/main.js'
 			}
 		},
@@ -17,10 +34,11 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: 4000,
-					base: '.', //当前目录
+					base: '.',
+					//当前目录
 					hostname: '127.0.0.1',
-					livereload:true,
-					open:'http://127.0.0.1:4000/index.htm',
+					livereload: true,
+					open: 'http://127.0.0.1:4000/index.htm',
 				}
 			}
 		},
@@ -49,8 +67,8 @@ module.exports = function(grunt) {
 			},
 			//监听所有文件
 			allWtach: {
-				files: ['src/**/*.scss','src/**/*.js'],
-				tasks:['compass:dev','concat'],
+				files: ['src/**/*.scss', 'src/**/*.js'],
+				tasks: ['compass:dev', 'copy'],
 				options: {
 					livereload: true,
 				},
@@ -107,18 +125,21 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-compass');
 	//node服务器
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认任务
-	grunt.registerTask('default', ['compass','concat']);
+	grunt.registerTask('default', ['compass', 'copy']);
 
 	//优化任务
 	grunt.registerTask('build', ['concat', 'cssmin', 'uglify']);
 
 	//开启一个node服务器监听css js 
-	grunt.registerTask('server', ['connect','watch:allWtach']);
+	grunt.registerTask('server', ['connect', 'watch:allWtach']);
+	 
+	//完成预览
+	grunt.registerTask('ok', ['connect','watch']);
 
 	//监听sass
-	grunt.registerTask('listen', ['connect','watch:sass']);
+	grunt.registerTask('listen', ['connect', 'watch:sass']);
 }
-
