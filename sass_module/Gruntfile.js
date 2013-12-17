@@ -10,14 +10,22 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		//复制文件
 		copy: {
-			main: {
+			js: {
 				expand: true,
 				cwd: 'src/',
-				src: '**/*.js',
+				src: ['**/*.js'],
 				dest: 'build/js',
 				flatten: true,
 				filter: 'isFile',
 			},
+			img: {
+				expand: true,
+				cwd: 'src/',
+				src: ['**/*.{png,jpg,gif}'],
+				dest: 'build/img',
+				flatten: true,
+				filter: 'isFile',
+			}
 		},
 		//合并文件
 		concat: {
@@ -105,13 +113,24 @@ module.exports = function(grunt) {
 				dest: 'build/css/main.min.css'
 			}
 		},
+		//js 检查
+		jshint: {
+			options: {
+				eqeqeq: true,
+				trailing: true
+			},
+			files: ['src/**/*.js']
+		},
+		//css检查
+		csslint: {
+			files: "build/css/*.css"
+		},
 		//清空文件
 		clean: {
 			build: {
-				src:"build/**"
+				src: "build/**"
 			}
 		}
-
 	});
 
 	// 加载提供"uglify"任务的插件
@@ -126,6 +145,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-csslint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// 默认任务
@@ -142,8 +163,8 @@ module.exports = function(grunt) {
 
 	//监听sass
 	grunt.registerTask('listen', ['connect', 'watch:sass']);
-	
+
 	//删除build文件
-	grunt.registerTask("clear",["clean"]);
+	grunt.registerTask("clear", ["clean"]);
 }
 
