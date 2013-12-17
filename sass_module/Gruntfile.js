@@ -74,15 +74,6 @@ module.exports = function(grunt) {
 				},
 			},
 		},
-		//sass
-		sass: {
-			dist: {
-				files: {
-					'build/css/main.css': 'src/**/*.scss',
-				},
-				tasks: ['compass:dev'],
-			},
-		},
 		compass: { // Task
 			dev: { // Another target
 				options: {
@@ -114,6 +105,12 @@ module.exports = function(grunt) {
 				dest: 'build/css/main.min.css'
 			}
 		},
+		//清空文件
+		clean: {
+			build: {
+				src:"build/**"
+			}
+		}
 
 	});
 
@@ -123,8 +120,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	//删除文件目录
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	//node服务器
 	grunt.loadNpmTasks('grunt-contrib-connect');
+
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -136,10 +136,14 @@ module.exports = function(grunt) {
 
 	//开启一个node服务器监听css js 
 	grunt.registerTask('server', ['connect', 'watch:allWtach']);
-	 
+
 	//完成预览
-	grunt.registerTask('ok', ['connect','watch']);
+	grunt.registerTask('ok', ['connect', 'watch']);
 
 	//监听sass
 	grunt.registerTask('listen', ['connect', 'watch:sass']);
+	
+	//删除build文件
+	grunt.registerTask("clear",["clean"]);
 }
+
