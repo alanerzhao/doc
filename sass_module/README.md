@@ -2,14 +2,15 @@
 ### 应用场景
  * 静态页面制作
  * 快速编写页面
- * 图片压缩,css js 检查，压缩，安装imagemin时记得权限问题
+ * 图片压缩,```css```,```js```,检查,压缩,(安装imagemin时记得权限问题,暂时不支持Window下有问题)
 
 ### 所需配置
  * 需要有服务器请求，也就是必须要有本地服务器
- * 需要LiveReload扩展插件
- * Node.js,Grunt模块
+ * 需要```LiveReload```扩展插件
+ * ```Node.js```,```Grunt```模块
  * 把所需模块放入当前目录 ```node_modules```,```Gruntfile.js```,```package.json```
- * 如果有gem可以单独配置config.rb
+ * 如果有gem可以单独配置```config.rb```(可以忽略)
+ * 默认支持```sass```,```compass```
 
 ### 使用方法
  * ```grunt``` 初始化项目目录
