@@ -13,12 +13,15 @@
 
 ### 使用方法
  * ```grunt``` 初始化项目目录
- * ```grunt server ``` 打开一个服务器，默认监听```index.htm``` 此时更改```sass```,```js```会自动刷新
- * ```grunt build ``` 优化压缩css js 完成developer
- * ```grunt ok ``` 查看开发版
- * ```grunt clear ``` 删除构建目录
+ * ```grunt server``` 打开一个服务器，默认监听```index.htm``` 此时更改```sass```,```js```会自动刷新
+ * ```grunt build``` 优化压缩css js 完成developer
+ * ```grunt ok``` 查看开发版
+ * ```grunt clear``` 删除构建目录
+ * ```grunt jshint``` 检查js
+ * ```grunt csslint``` 检查css
 
 
+###### 比较适用于个人项目，或者练习DEMO
  -------
  f5刷新工具
   [F5]:http://getf5.com/
