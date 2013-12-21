@@ -124,7 +124,14 @@
 :bp -- buffer列表中前一个 buffer
 :b# -- 你之前所在的前一个 buffer
 
-
+vimwiki
+<leader>ww 在当前窗口打开维基首页
+<leader>wt 在新tab打开维基首页
+<leader>w<leader>w 打开/新建当天日记
+<leader>w<keader>t 在新tab打开/新建当天日记
+<leader>ws 选择维基项目（详见下面的“多个维基项目”一节）
+map <S-F4> :VimwikiAll2HTML<cr>
+map <F4> :Vimwiki2HTML<cr>
 
 ----- end 80 page ------
 

@@ -3,11 +3,13 @@
 * 优化项目 执行 ```  grunt build ```
 * 开发测试 执行 ``` grunt server ``` 
 * 单独监听sass 执行 ``` grunt listen ```
+* 添加新的依赖 ```npm install <module> --save-dev```
 * */
 module.exports = function(grunt) {
 	// 项目配置
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		info: grunt.file.readJSON('info.js'),
 		//复制文件
 		copy: {
 			js: {
@@ -29,13 +31,16 @@ module.exports = function(grunt) {
 		},
 		//合并文件
 		concat: {
+			options: {
+				banner: '/*! <%= info.date %> */'
+			},
 			css: {
 				src: 'build/css/**.css',
-				dest: 'build/css/main.css'
+				dest: 'build/css/build.css'
 			},
 			js: {
 				src: 'build/js/**.js',
-				dest: 'build/js/main.js'
+				dest: 'build/js/build.js'
 			}
 		},
 		connect: {
@@ -102,15 +107,15 @@ module.exports = function(grunt) {
 		//压缩js
 		uglify: {
 			build: {
-				src: 'build/js/main.js',
-				dest: 'build/js/main.min.js'
+				src: 'build/js/build.js',
+				dest: 'build/js/build.min.js'
 			}
 		},
 		//压缩css
 		cssmin: {
 			build: {
-				src: 'build/css/main.css',
-				dest: 'build/css/main.min.css'
+				src: 'build/css/build.css',
+				dest: 'build/css/build.min.css'
 			}
 		},
 		//js 检查
@@ -130,6 +135,18 @@ module.exports = function(grunt) {
 			build: {
 				src: "build/**"
 			}
+		},
+		weinre: {
+			dev: {
+				options: {
+					httpPort: 9999,
+					boundHost: '-all-',
+					verbose: true,
+					debug: true,
+					readTimeout: 5,
+					deathTimeout: 15
+				}
+			}
 		}
 	});
 
@@ -143,6 +160,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	//node服务器
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-weinre');
 
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -166,5 +184,10 @@ module.exports = function(grunt) {
 
 	//删除build文件
 	grunt.registerTask("clear", ["clean"]);
+
+	//自定义任务
+	grunt.registerTask('print', 'Log some stuff.', function() {
+		grunt.log.write('Logging some stuff...').ok();
+	});
 }
 
