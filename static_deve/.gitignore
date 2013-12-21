@@ -1,4 +1,4 @@
-#忽略本地开发文件
+#ignore local deve files
 /.sass-cache
 /node_modules
 /src
