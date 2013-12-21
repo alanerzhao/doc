@@ -1,0 +1,10 @@
+#忽略本地开发文件
+/.sass-cache
+/node_modules
+/src
+Gruntfile.js
+package.json
+/build/js/*
+!/build/js/*.min.js
+/build/css/*
+!/build/css/*.min.css

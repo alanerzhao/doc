@@ -24,6 +24,12 @@ $bg:green;
           border-radius: $radius;
 
 }
+#page {
+	width:100px;
+	height: 100px;
+	border-radius:(10px);
+	border:1px solid red;
+}
 /*使用 compasss框架*/
 div {
 	@include border-radius(12px);

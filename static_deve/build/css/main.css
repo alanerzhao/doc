@@ -1,322 +1,128 @@
 @charset "UTF-8";
-/* include css file */
+@import url(../../src/sass/mobile.base.css);
 /*@import 'normalize.css'*;*/
-/* include compass framework*/
-/*引入sass module */
-/*@import 'module';*/
-body {
-  background: #fff;
-}
-.page {
-  width: 100%;
-  min-width: 320px;
-  margin: 0 auto;
-  position: relative;
-  background: url("../img/back.png") repeat;
+/* 引入外部css文件 不建议用这种方式引用单独的css因为也会靠成下载*/
+/*引入compass框架*/
+/*引入css可以引入模块化会把代码加进来*/
+html {
+  border: 1px solid blue;
 }
 
-.page-cont {
-  width: 1024px;
-  margin: 0 auto;
-  position: relative;
-  height: 527px;
-  *margin-bottom: 140px;
-}
-.cont-info-logo {
-  background: url("../img/font.png") no-repeat;
-  width:410px;
-  height: 142px;
-  display:inline-block;
-  *display:inline;
-  *zoom:1;
-  vertical-align:middle;
+/*定义变量先定义再使用*/
+/*混入格式 todo 多态*/
+#page {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid red;
 }
 
-.page-cont-slide {
-  background: url("../img/bg_con.png") no-repeat;
-  width: 389px;
-  height: 693px;
-  position: relative;
-  margin-right: 26px;
-  z-index: 999;
+/*使用 compasss框架*/
+div {
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+  border-radius: 12px;
+  border: 1px solid red;
+}
+
+nav {
+  overflow: hidden;
+}
+
+nav ul {
+  border: 1px solid red;
+  overflow: hidden;
+}
+
+/*嵌套css*/
+nav ul li {
+  color: red;
+  background: green;
+  border: 1px solid red;
   float: left;
-  margin-top: 30px;
+  overflow: hidden;
+  width: 100px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+nav ul li:hover {
+  background: red;
+  color: #fff;
 }
 
-.page-cont-info {
-  float: left;
-  margin-top: 100px;
+.contet {
+  background: green;
+  height: 100px;
+  width: 300px;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-.qcode img {
-  margin-left: 10px;
-  width: 150px;
+/*@extend */
+.message, .success, .error, .warning {
+  background: #ccc;
+  padding: 10px;
+  color: #333;
 }
 
-.page-cont-info h3 {
-  margin-bottom: 30px;
+.success {
+  background: green;
 }
 
-.cont-info-icon {
-  background: url("../img/icon.png") no-repeat;
-  width: 154px;
-  height: 154px;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align:middle;
+.error {
+  background: red;
 }
 
-.cont-info-down a {
-  display: block;
-}
-
-.cont-info-down span {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-  vertical-align: middle;
+.warning {
+  background: yellow;
 }
 
 .footer {
-  text-align: center;
-  color: #999;
-  margin-top: 50px;
-  border-top: 1px solid #F5F5F5;
-  padding-top: 15px;
-  margin-bottom: 50px;
+  font-size: 70%;
 }
 
-.footer ul {
-  margin-bottom: 6px;
-}
-
-.footer a {
-  color: #999;
-}
-
-.footer li {
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-}
-
-.footer .copy {
-  text-align: center;
-}
-
-.ui-line {
-  margin: 0 2px;
-  font-weight: 400;
-  font-family: sans-serif;
-}
-
-/*tab*/
-#webPage #Top-swipe {
-  width: 300px;
-  overflow: hidden;
-  position: absolute;
-  left: 49px;
-  top: 65px;
-  height: 533px;
-}
-
-#webPage .swipe-wrap img {
-  _height: 533px;
-  display: block;
-  _width: 300px;
-}
-
-.swipe-wrap {
-  overflow: hidden;
-  position: relative;
-}
-
-.swipe-wrap .swipe-item {
+.footer p {
+  font-size: 3rem;
+  border: 1px solid #ddccee;
+  margin-top: 20px;
   float: left;
-  width: 100%;
-  position: relative;
+  width: 0%;
 }
 
-.top-position .on {
-  background-color: #D23A27;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d23a27), color-stop(100%, #d23a27)) !important;
-  background-image: -webkit-linear-gradient(top, #d23a27, #d23a27) !important;
-  background-image: -moz-linear-gradient(top, #d23a27, #d23a27) !important;
-  background-image: -ms-linear-gradient(top, #d23a27, #d23a27) !important;
-  background-image: -o-linear-gradient(top, #d23a27, #d23a27) !important;
-  background-image: linear-gradient(top, #d23a27, #d23a27) !important;
-}
-
-.top-position li {
-  width: 8px;
-  height: 8px;
-  border-radius: 10px;
-  background: #BFC0C2;
-  float: left;
-  margin: 0 4px;
-}
-
-.top-position {
-  position: absolute;
-  bottom: 170px;
-  right: -60px;
-  _right: -70px;
-}
-
-.back {
-  width: 100%;
-  min-width: 320px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.header-hd{
-  text-align: center; 
-  width: 100%;
-  margin: 0 auto; 
-}
-.header-hd img{
-  margin: 0 auto;
-  padding: 44px 0 26px;
-}
-.main-ios-one {
-  cursor:not-allowed;
-}
-.main-ios, .main-an{
-  display:inline-block;
-  height: 70px;
-  width: 190px;
-}
-
-.main-ios{
-    background: url(../img/ios.png) no-repeat;
-}
-.main-an{
-  background: url(../img/anzhuo.png) no-repeat;
-   margin-top: 20px;
-}
-.content-font{
-    padding-top: 26px;
-    background: url(../img/font.png) no-repeat;
-    height: 90px;
-    width: 260px;
-    margin: 0 auto;
-}
-.main-bd{
-  width: 100%;
-  text-align:center;
-  margin: 0 auto;
-}
-.back .main-hot-bd #position {
-    top:0;
-    right:0;
-    position: relative;
-    display: inline-block;
-}
-.chajian{
-  height: 570px;
-}
-.footer-ft{
-  padding-top: 40px;
-  margin: 0 auto;
-  text-align: center;
-}
-.mofang-logo{
-  display: inline-block;
-  background: url(../img/mofanglog.png) no-repeat;
-  width:180px;
-  height:64px;
-}
-.about{
-  padding:40px 0 60px;
-  font-size: 0.875em;
-}
-
-/*main start*/
-.back #Top-swipe {
-  padding-top: 10px;
-  overflow: hidden;
-  visibility: hidden;
-  position: relative;
-  text-align:center;
-}
-
-.swipe #position {
-  text-align: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.swipe-wrap .swipe-item {
-  float:left;
-  width:100%;
-  position: relative;
-}
-.main-hot-bd{
-  margin-top: 30px;
-}
-.about a{color: #6B6B6B;}
-.about li{color: #6B6B6B;}
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */
-}
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width: 321px) {
-  /* Styles */
- 
-}
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) {
-  /* Styles */
-}
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* Styles */
-  
-
-}
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  /* Styles */
-
-}
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  /* Styles */
-  .page-cont {
-    width: 100%;
-  }
-   .cont-info-icon {
-    background-size:100px;
-    width: 100px;
-  }
-  .cont-info-logo {
-     width: 280px;
-     background-size:280px;
-  }
-  .page-cont-slide {
-    margin-right: 0;
-    width: 350px;
-    background-size:350px;
-  }
-  #webPage #Top-swipe {
-    width: 272px;
-    left: 43px;
-    top:58px;
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 60%;
   }
 
+  .header-info-hd img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .ui-title {
+    height: 25px;
+    line-height: 25px;
+  }
+
+  .header-info-bd-title {
+    margin-bottom: 0;
+  }
 }
-/* Desktops and laptops ----------- */
-@media only screen and (min-width: 1224px) {
-  /* Styles */
+@media screen and (max-width: 725px) {
+  .header-info-bd-title {
+    margin-bottom: 0;
+  }
 }
-/* Large screens ----------- */
-@media only screen and (min-width: 1824px) {
-  /* Styles */
-}
-/* iPhone 4 ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /* Styles */
+@media screen and (min-width: 320px) and (max-width: 479px) {
+  body {
+    background: green;
+  }
 }
