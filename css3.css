@@ -1,0 +1,135 @@
+@charset "UTF-8";
+:root {
+  background: #ccedcc; }
+
+.content {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  overflow-x: auto;
+  overflow-y: scroll; }
+
+body {
+  background: #ccc;
+  margin: 20px; }
+
+[id="css3-selector"] li:first-child {
+  border: 1px solid red;
+  background: green; }
+
+[data="number"] {
+  border: 1px solid green; }
+
+[title="item"] {
+  border: 1px solid yellow; }
+
+[id*="css3"] {
+  font-size: 20px;
+  border: 1px solid blue; }
+
+[id^="selector"] {
+  background: green; }
+
+[id$=\-1] {
+  background: blue;
+  font-size: 18px; }
+
+a[href$=\/]:after,
+a[href$=htm]:after {
+  content: "-百度"; }
+
+a[href$=htm]:before {
+  content: "度娘-"; }
+
+a[href$=png]:after {
+  content: "图像"; }
+
+p:after, p:before {
+  content: "☃☃"; }
+
+li:empty {
+  height: 20px;
+  background: yellow; }
+
+:target {
+  background: #eeddcc; }
+
+li:nth-child(-n+3) {
+  background: black !important; }
+
+.wrap .left, .wrap .right, .wrap .center {
+  float: left;
+  width: 33.33333%;
+  border: 1px solid red;
+  -webkit-box-sizing: border-box;
+  text-align: center; }
+.wrap .right {
+  border: 1px solid green;
+  position: relative; }
+.wrap .center {
+  border: 1px solid blue; }
+
+#box {
+  width: 100px;
+  height: 100px;
+  background: green;
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+  float: left;
+  position: relative;
+  transition: all 0.9s ease; }
+
+.box-hidden {
+  transition: all 0.8s ease;
+  position: relative;
+  width: 310px;
+  overflow: hidden; }
+
+.moveLeft {
+  left: 300px; }
+
+#box-wrap {
+  width: 100px;
+  overflow: hidden;
+  height: 100px; }
+
+@-webkit-keyframes mycolor {
+  0% {
+    background: red; }
+
+  50% {
+    background: blue; }
+
+  100% {
+    background: yellow; } }
+
+#box:hover {
+  -webkit-animation-name: mycolor;
+  -webkit-animation-duration: 5s;
+  -webkit-timing-function: ease;
+  border-radius: 100px;
+  -webkit-transform: rotate(720deg);
+  -moz-transform: rotate(720deg);
+  -ms-transform: rotate(720deg);
+  -o-transform: rotate(720deg);
+  transform: rotate(720deg); }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    background: white; }
+
+  100% {
+    opacity: 1;
+    background: white; } }
+
+body {
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1; }
+
+/*#box:hover {*/
+/*left: 200px;*/
+/*}*/
