@@ -125,7 +125,7 @@ Git 总结分享
     git remote show origin
     git push origin --tags //把代标签的版本推送到服务器 默认不推荐标签
     git rebase master
-    
+    git commit -a -m "commit info" 只提交暂存区文件忽略本地没有加入到暂存区的文件
     ###git aliases
     
     git config --global alias.co checkout
