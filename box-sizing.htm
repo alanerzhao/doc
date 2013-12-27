@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<!--Win phone 高版本-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--forbid zoom 1:1 -->
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<!--forbid apple tools-->
+	<!--网站开启对web app程序的支持-->
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<!--控制状态栏显示样式-->
+	<!--默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明）-->
+	<!--<meta content="black" name="apple-mobile-web-app-status-bar-style" />-->
+	<!--phone numer select-->
+	<meta name="format-detection" content="telephone=no" />
+    <!--添加到桌面时有圆角 http://iconogen.com/-->
+	<link rel="apple-touch-icon-precomposed" href="./build/img/icon.png" />
+	<!--不带高光显示-->
+	<link rel="apple-touch-startup-image" href="" />
+	<!-- iPad (portrait) SPLASHSCREEN-->
+	<link href="http://placehold.it/768x1004.png" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+	<link rel="stylesheet" href="./build/css/base.css" />
+	<link rel="stylesheet" href="./build/css/normalize.css" />
+	<link rel="stylesheet" href="./build/css/box-sizing.css" />
+</head>
+<body>
+	
+	<div class="page">
+		<header class="header">
+			<h4 class="css3-fun">使用box-sizing</h4>
+			<nav class="box-header-menu clearfix">
+				<ul>
+					<li>这是导航1</li>
+					<li>这是导航2</li>
+					<li>这是导航3</li>
+				</ul>	
+			</nav>
+			<h4 class="css3-fun">使用Flexbox</h4>
+			<nav class="flex-header-menu">
+				<ul>
+					<li>这是导航1</li>
+					<li>这是导航2</li>
+					<li>这是导航3</li>
+				</ul>
+			</nav>
+			<div class="hi"></div>
+			<nav class="flex2-header-menu">
+				<ul>
+					<li>这是导航1</li>
+					<li>这是导航2</li>
+					<li>这是导航3</li>
+					<li>这是导航4</li>
+				</ul>
+			</nav>
+		</header>
+		<section class="main">
+			<h4 class="css3-fun">行内图片</h4>
+			<ul class="inline-bg">
+				<li><img src="http://placehold.it/350x150" alt="" /></li>
+				<li><img src="http://placehold.it/350x150" alt="" /></li>
+			</ul>
+				<h4 class="css3-fun">使用background-size</h4>
+			<div class="bg-size clearfix">
+				<div class="bg-size-item">
+					<img src="http://static.youku.com/v1.0.0916/index/img/mobile/video_defaultpic2.png" alt="" />
+					<div class="bg_img"></div>
+				</div>
+				<div class="bg-size-item">
+					<img src="http://static.youku.com/v1.0.0916/index/img/mobile/video_defaultpic2.png" alt="" />
+					<div class="bg_img"></div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer"></footer>
+	</div>
+	
+	<script type="text/javascript" src = "./build/js/zepto.js"></script>
+	<script type="text/javascript">
+	
+	</script>
+</body>
+</html>
+
