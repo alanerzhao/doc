@@ -16,9 +16,6 @@ Mobile web page
 ### 图片缩放
 
 ### 自适应布局
- #### FlexBox 
- #### box-sizing
- #### 百分比
 
 ### 媒体查询
 
@@ -26,3 +23,22 @@ Mobile web page
 
 ### SwipeJS DeviceJS ZeptoJS
 
+
+### 一些属性
+* -webkit-text-size-adjust:none
+* rem
+* Flexbox
+* box-sizing
+* background-size
+			html {font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/}
+			body {font-size: 1.4rem;/*1.4 × 10px = 14px */}
+			h1 { font-size: 2.4rem;/*2.4 × 10px = 24px*/}
+<!--[if (gt IE 8) | (IEMobile)]><!-->
+  <link rel="stylesheet" href="/css/main.css">
+<!--<![endif]-->
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+  <link rel="stylesheet" href="/css/main-ie.css">
+<![endif]-->
+
+http://ress.io/get-started/
