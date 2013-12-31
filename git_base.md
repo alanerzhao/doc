@@ -80,6 +80,10 @@ Git 总结分享
       git reset commit ID  
       git reset HEAD //还原到你最近提交的版本
       git reset ^HEAD //还原到你最近提交的版本的第二个
+	  git reset --soft HEAD^  //放弃最新提交
+
+	  git reflog show master //列出操作历史
+	  git reset master@{}  //恢复
       
     
     如果你越改越乱，想重新获取一份最新的，你可能重新克隆一分，或者用下面这个命令
@@ -115,7 +119,7 @@ Git 总结分享
     git status // 查看文件状态
     git log  // 查看提交历史
     git add // 这是个多功能命令，根据目标文件的状态不同，此命令的效果也不同：可以用它开始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等）
-    git commit -a // 跳过暂缓区
+    git commit -am// 跳过暂缓区
     git fetch //到远程仓库中拉取所有你本地仓库中还没有的数据有一点很重要，需要记住，fetch 命令只是将远端的数据拉到本地仓库，并不自动合并到当前工作分支，只有当你确实准备好了，才能手工合并。
     git rm
     git rm --cached //只移除暂存区
@@ -126,6 +130,14 @@ Git 总结分享
     git push origin --tags //把代标签的版本推送到服务器 默认不推荐标签
     git rebase master
     git commit -a -m "commit info" 只提交暂存区文件忽略本地没有加入到暂存区的文件
+	git remote rm remoteName 删除远程仓库
+	git stash 保存当前工作进度 需要把本地文件追加到暂存区才可以使用
+
+
+	git clean -nd //将要删除哪些文件
+
+	git clean -fd //真要删除的文件整个世界清静了
+
     ###git aliases
     
     git config --global alias.co checkout
@@ -136,6 +148,9 @@ Git 总结分享
     
     
     
+## got git
+	文件归档
+	git archive -o last.zip master
 ## 高级功能
 ---
 ### 子模块
