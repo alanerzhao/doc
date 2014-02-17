@@ -40,11 +40,28 @@ Mobile web page
  ###媒体查询
 
 
-## JS的使用
+## 移动端JS库的使用
     SwipeJS  Slide show
     DeviceJS device check
     ZeptoJS  Min version jQuery
     iscroll  scroll lib
-    
-    jQuery Mobile ? Sencha Touch ? jQTouch ...... Zepto
+    FastClick 解决zeptoJS tap 点透，提升click 点击
+
+
+
+http://www.wheattime.com/increase-your-sites-performance-with-hardware-accelerated-css.html
+
+QA transition 抖动
+
+开启硬件加速
+
+.cube {
+   -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+   /* Other transform properties here */
+}
+
 
