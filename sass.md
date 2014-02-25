@@ -38,13 +38,10 @@ sass、Compass 安装使用
 
     更新gem
     $ gem update -system
-
     卸载包
     $ gem uninstall package
-
     更新所有包
     $ gem update
-
     列出所有本地包
     $ gem list
 
@@ -60,6 +57,8 @@ sass、Compass 安装使用
 
 [Compass]:http://compass-style.org/
 [Sass]:http://sass-lang.com/
+[Compass] - Compass doc  
+[Sass] - Sass doc
 
 
 
