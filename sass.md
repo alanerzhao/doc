@@ -56,6 +56,11 @@ sass、Compass 安装使用
         ruby dk.rb init
         ruby dk.rb install
 
+## 相关文档
+
+[Compass]:http://compass-style.org/
+[Sass]:http://sass-lang.com/
+
 
 
 
