@@ -60,6 +60,48 @@ sass、Compass 安装使用
 [Compass] - Compass doc  
 [Sass] - Sass doc
 
+## 小指南
+    
+    1.模块化代码（开发的时候多人合作，可以模块化代码，然后能过sass导入）
+
+    @import module
+    @import module2
+
+    2.监听sass文件，发布sourcemap到指定的目录
+    //单文件监听
+        sass --watch --compass --sourcemap src/sass/file.sass:file.css
+
+    //多文件监听
+        sass --watch --compass --sourcemap src/sass:build/css
+
+    3.sass和scss互相转换
+      sass-convert style.sass style.scss
+      sass0cibvert style.scss style.sass
+    4.
+
+    sass 使用示例
+    
+    1.引入一个sass
+      example  @import 'tool';
+
+    2.引入一个css TODO ( 引入外部css文件 不建议用这种方式引用单独的css因为也会靠成下载)
+      example  @import 'normalize.css
+      example  @import '../../src/sass/mobile.base.css';
+
+    3.引入compass框架
+      example @import 'compass/css3';
+
+    4.使用代码块混合 (mixin)
+     example @include flexbox()
+
+    QA 问题
+    
+    1.头部声明否则会有编码问题
+    2.属性结束注意";"
+
+
+
+
 
 
 
