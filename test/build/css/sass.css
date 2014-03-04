@@ -1,0 +1,48 @@
+#wrap {
+  font-size: 14px;
+  background: #eeeeee;
+}
+
+.left, #wrap .right {
+  background: red;
+}
+
+.left:hover, #wrap .right:hover {
+  background: green;
+}
+
+#wrap .left, #wrap .right {
+  width: 100px;
+}
+#wrap .left a, #wrap .right a {
+  color: #eeddcc;
+  border-style: dotted;
+  border-color: red;
+  border-width: 2px;
+}
+#wrap .left a:hover, #wrap .right a:hover {
+  color: #ccddee;
+}
+
+#flex {
+  border: 1px solid blue;
+  -moz-box-shadow: 1px 1px 1px red;
+  -webkit-box-shadow: 1px 1px 1px red;
+  box-shadow: 1px 1px 1px red;
+}
+
+.left, #wrap .right {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #cceddd;
+  background: #eeddcc;
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    background: green;
+  }
+}
+body {
+  background: #e6e6e6;
+}

@@ -1,0 +1,73 @@
+# git base my setting
+[user]
+	email = alanerzhao@gmail.com
+	name = baozi
+
+[alias]
+
+	# add
+	a = add                           # add
+	chunkyadd = add --patch           # stage commits chunk by chunk
+	
+	#status
+	st = status
+
+	# commit
+	c = commit -m                     # commit with message
+	ca = commit -am                   # commit all with message
+	ci = commit                       # commit
+	amend = commit --amend            # ammend your last commit
+	ammend = commit --amend           # ammend your last commit
+
+	#branch
+	br = branch
+	ft = fetch
+
+	#rebase
+	rb = rebase
+	rc = rebase --continue
+	rs = rebase --skip
+
+
+	# checkout
+	co = checkout                     # checkout
+	nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
+
+	#diff
+	df = diff
+	dc = diff --cached
+	dl = diff HEAD^
+
+	#pull && push
+	pl = pull
+	ps = push
+	
+	#log
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	ign = ls-files -o -i --exclude-standard
+
+[color]
+
+	ui = true
+
+[color "branch"]
+	
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+

@@ -1,0 +1,148 @@
+/* Retset */
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{ font:12px/1.5 tahoma,arial,"Hiragino Sans GB",\5b8b\4f53;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+table{ border-collapse:collapse;border-spacing:0;}
+ol,ul{ list-style:none;}
+fieldset,img{ border:0 none;}
+:focus { outline:0;}
+a{ text-decoration:none;}
+a:hover { text-decoration:underline;}
+/* 高亮选中 */
+::-moz-selection {background:#08c;color:#fff;}
+::selection {background:#08c;color:#fff;}
+
+/* Placeholder Color */
+::-moz-placeholder {color: #aaa;}
+::-webkit-input-placeholder {color: #aaa;}
+::-ms-input-placeholder {color:#aaa;}
+:focus{outline:none;}
+
+/*功能性CSS*/
+.fn-clear:after { content:'\0020';display:block;clear:both;height:0;}
+.fn-clear {zoom:1;}
+
+/*向左向右*/
+.fn-right{float:right;}
+.fn-left{float:left;}
+
+/*显示隐藏*/
+.fn-hide { display:none;}
+.fn-show { display:block;}
+
+.fn-invisible {visibility:hidden;}
+.fn-affix {position:fixed;top:0;}
+
+/*省略号*/
+.fn-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+
+/*内联块*/
+.fn-inb { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+
+/*强制文本换行*/
+.fn-wrap { word-wrap:break-word;word-break:break-all;}
+
+/*grid*/
+.grid_1 {
+    width: 25px;
+}
+.grid_2 {
+    width: 60px;
+}
+.grid_3 {
+    width: 95px;
+}
+.grid_4 {
+    width: 130px;
+}
+.grid_5 {
+    width: 165px;
+}
+.grid_6 {
+    width: 200px;
+}
+.grid_7 {
+    width: 235px;
+}
+.grid_8 {
+    width: 270px;
+}
+.grid_9 {
+    width: 305px;
+}
+.grid_10 {
+    width: 340px;
+}
+.grid_11 {
+    width: 375px;
+}
+.grid_12 {
+    width: 410px;
+}
+.grid_13 {
+    width: 445px;
+}
+.grid_14 {
+    width: 480px;
+}
+.grid_15 {
+    width: 515px;
+}
+.grid_16 {
+    width: 550px;
+}
+.grid_17 {
+    width: 585px;
+}
+.grid_18 {
+    width: 620px;
+}
+.grid_19 {
+    width: 655px;
+}
+.grid_20 {
+    width: 690px;
+}
+.grid_21 {
+    width: 725px;
+}
+.grid_22 {
+    width: 760px;
+}
+.grid_23 {
+    width: 795px;
+}
+.grid_24 {
+    width: 830px;
+}
+.grid_25 {
+    width: 865px;
+}
+.grid_26 {
+    width: 900px;
+}
+.grid_27 {
+    width: 935px;
+}
+.grid_28 {
+    width: 970px;
+}
+.grid {
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    float: left;
+    display: inline;
+}
+.container {
+    width: 980px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.row .row {
+    margin: 0 -0px 0 -10px;
+    width: auto;
+    display: inline-block;
+}
+
