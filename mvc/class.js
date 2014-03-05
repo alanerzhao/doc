@@ -22,9 +22,18 @@ var Class = function(parent) {
 
     }
 
+    //更改执行上下文作用域,作用域代理函数封装
+
+    klass.proxy = function (func) {
+        var self = this;
+        return (function() {
+            return func.apply(self,arguments);
+        })
+    }
+    //
 	//定义这个fn是为了方便 给实例添加属性或方法
 	klass.fn = klass.prototype;
-
+    klass.fn.proxy = klass.proxy;
 	//定义类的别名
 	klass.fn.parent = klass;
 
@@ -62,12 +71,7 @@ var Class = function(parent) {
 		if (included) included(klass);
     }
         // 初始化实例
-		klass.fn.init = function(param) {
-            if(!param) {
-            console.log("no")
-            } else {
-			console.log(param);
-            }
+		klass.fn.init = function() {
 		};
 		return klass;
 	}
@@ -118,5 +122,5 @@ var Cat = new Class(Animal);
 
 var tommy = new Cat
     //继承了Animal的breath方法
-    tommy.breath()
+    //tommy.breath()
 //console.dir(tommy);

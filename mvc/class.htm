@@ -3,10 +3,55 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
+    <style type="text/css">
+        .active {
+            background: green;
+        }
+    </style>
     <!--<link rel="stylesheet" href="./m_base.css" />-->
 </head>
 <body>
     <div class="wrapper">wrapper</div>
+    <button id="btn">btn</button>
+    <ul id="list">
+    	<li>1</li>
+    	<li>2</li>
+    	<li>3</li>
+    	<li>4</li>
+    	<li>5</li>
+    	<li>6</li>
+    	<li>7</li>
+    	<li>8</li>
+    	<li>9</li>
+    	<li>10</li>
+    </ul>
+    <script type="text/javascript" src="./jquery.js"></script>
 	<script type="text/javascript" src="./class.js"></script>
+    <script type="text/javascript" src="./pubsub.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $("#list li").bind("all",function () {
+            $(this).toggleClass("active");
+        })
+        $("#list").delegate("li",'click',function () {
+            $(this).toggleClass("active");
+        })
+        var Button = new Class;
+        var i = $("#list li").length+1;
+        Button.include({
+            click:function() {
+                $("#list").append("<li>"+i+++"</li>")
+                $("#list li").trigger("all")
+                console.log("1")
+            },
+            init: function (element) {
+                this.element = $(element);
+                this.element.click(this.click);
+            }
+        })
+        var btn = new Button();
+        btn.init("#btn");
+      // console.log(btn);
+    </script>
+
 </body>
 </html>
