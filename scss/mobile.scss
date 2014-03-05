@@ -1,0 +1,41 @@
+@charset "utf-8";
+/*
+    sass 使用示例
+    
+    1.引入一个sass
+      example  @import 'tool';
+
+    2.引入一个css TODO ( 引入外部css文件 不建议用这种方式引用单独的css因为也会靠成下载)
+      example  @import 'normalize.css
+      example  @import '../../src/sass/mobile.base.css';
+
+    3.引入compass框架
+      example @import 'compass/css3';
+
+    4.使用代码块混合 (mixin)
+     example @include flexbox()
+
+    QA 问题
+    
+    1.头部声明否则会有编码问题
+    2.属性结束注意";"
+ */
+//@import 'compass/css3';
+@import 'tool';
+html {
+  font-size: $browser-default-font-size;/* 62.5% 10 ÷ 16 × 100% = 62.5% */
+}
+.page {
+    @include flexbox();
+    & > section {
+        @include flex(1);
+        border:1px solid red;
+        font-size: pxTorem(14px);
+        @include rem-fallback(height,100);
+        @include rem-fallback(margin,10,20);
+        @include rem-fallback(padding,1,2,3,4);
+        @include rem-fallback(width,20);
+        @include rem-fallback(line-height,1.2);
+        width: 200px;
+    }
+}
