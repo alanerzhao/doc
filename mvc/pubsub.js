@@ -20,7 +20,7 @@ var Pubsub = {
         var ev = args.shift();
 
         var list, calls, i, l;
-        console.log(this._callbacks)
+        //console.log(this._callbacks)
         //如果不存在对应事件对象
         //如果不存在以地应事件对象回调方法
         if(!(calls = this._callbacks)) return this;
@@ -30,7 +30,6 @@ var Pubsub = {
         for(i=0, l = list.length;i < l;i++) {
 
            list[i].apply(this,args);
-        debugger;
             return this;
         }
     }
@@ -40,4 +39,4 @@ Pubsub.subscrib("wen",function () {
 }).subscrib("list",function () {
     console.log("list");
 })
-Pubsub.publish("wen");
+//Pubsub.publish("wen");
