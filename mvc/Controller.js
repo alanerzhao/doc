@@ -1,9 +1,10 @@
 var exports = this;
 //var mod = {};
 (function($) {
-    var mod = {};
-    mod.create = function (includes){
+	var mod = {};
+	mod.create = function(includes) {
 		var result = function() {
+            //执行第个实例的init构造属性
 			this.init.apply(this, arguments);
 		};
 		result.fn = result.prototype;
@@ -26,18 +27,42 @@ var exports = this;
 
 })(jQuery);
 
-$(function() {
-	var ToggleView = Controller.create({
-		init: function(view) {
-			this.view = $(view);
-			this.view.hover(this.proxy(this.toggleClass));
+var exports = this;
+
+jQuery(function($) {
+	exports.SearchView = Controller.create({
+        //把对应的key通过$传换成jquery对象存起来
+		elements: {
+			"input[type=search]": "searchInput",
+			"form": "searchForm"
 		},
-		toggleClass:function(e) {
-			this.view.toggleClass("active",e.data);
+
+		init: function(element) {
+            console.log(element)
+			this.el = $(element);
+			this.refreshElements();
+			this.searchForm.submit(this.proxy(this.search));
+		},
+
+		search: function() {
+			alert("Searching: " + this.searchInput.val());
+			return false;
+		},
+
+		// Private
+		$: function(selector) {
+			return $(selector, this.el);
+		},
+
+        //映射elements表
+		refreshElements: function() {
+			for (var key in this.elements) {
+				this[this.elements[key]] = this.$(key);
+			}
 		}
 	});
-    console.dir(new ToggleView)
-    window.ToggleView = ToggleView;
-	new ToggleView("#view");
+
+    
+	console.dir(new SearchView("#users"));
 });
 
