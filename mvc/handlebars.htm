@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+    <style type="text/css">
+.wrap {
+    width:600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.list{
+    float: left;
+    color: #000;
+    margin-bottom:20px;
+    padding:0;
+    border:1px solid red;
+}
+.number{
+    position:absolute;
+    right: 20px;
+    border:1px solid green;
+    width:80px;
+    text-align:center;
+}
+.mark{
+    left: 20px;
+    position:absolute;
+    border:1px solid red;
+    width:80px;
+    text-align:center;
+}
+.list li {
+    line-height: 30px;
+    text-align:left;
+    float:left;
+    list-style-type:none;
+    padding:0 10px;
+}
+.clearfix:after{
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+    </style>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./handlebars.js"></script>
+    <script type="text/javascript" src="./json.js"></script>
+    <script id="tpl" type="text/x-handlebars-template">
+        <div class="wrap clearfix">
+        <!--this指你想遍历的任何对象 [] {}-->
+            {{#each this}}
+                {{#if this.con}}
+                    <ul class="list">
+                        <li>
+                        <span class="index">{{addOne @index}}</span>
+                        <span>{{letter @key}}</span>
+                        <span>{{log "look at me"}}</span>
+                            <span class="mark">{{../this.name}}</span>
+                            <span class="number"> {{../this.con.length}}:个 </span>
+                        </li>
+                        {{#each this.con}}
+                            <li>{{agree_button this.name}}</li>
+                        {{/each}}
+                    </ul>
+
+                {{else}}
+                    {{!<h3>没有数据</h3>}}
+                    <h3>没有数据</h3>
+                {{/if}}
+
+            {{/each}}
+
+        </div>
+    </script>
+    <script id="tpl2" type="text/x-handlebars-template">
+
+
+    </script>
+<script type="text/javascript">
+Handlebars.registerHelper('agree_button', function() {
+  return new Handlebars.SafeString(
+    "<button>" + this.name + "</button>"
+  );
+});
+
+Handlebars.registerHelper("demo",function () {
+    return new Handlebars.SafeString("<a href=''>"+this.name+"</a>")
+})
+
+Handlebars.registerHelper("debug", function(optionalValue) {
+ // console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+  if (optionalValue) {
+  //  console.log("Value");
+   // console.log("====================");
+    //console.log(optionalValue);
+  }
+});
+
+Handlebars.registerHelper("letter",function(index,options){
+            var letter = parseInt(index) +1;
+            var ascii = 1+63+letter;
+           return String.fromCharCode(ascii);
+        });
+
+Handlebars.registerHelper("addOne",function(index,options){
+            var letter = parseInt(index) +1;
+            var ascii = 1+63+letter;
+            return letter;
+           //return String.fromCharCode(ascii);
+        });
+
+
+$(function () {
+    var source = $('#tpl').html();
+    //预编译模板
+    var template = Handlebars.compile(source);
+    //匹配json内容
+    var json = data;
+    var html = template(json)
+   //  console.log(json)
+    //输入模板
+    $("body").html(html);
+})
+</script>
+    </body>
+    </html>
