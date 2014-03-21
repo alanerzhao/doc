@@ -16,12 +16,12 @@
 - 打开**FillderScript**标签栏，找到```OnBeforeRequest```方法   
 
 
-      if (oSession.url.toLowerCase().indexOf(".mofang.com")>-1) {
+        if (oSession.url.toLowerCase().indexOf(".mofang.com")>-1) {
       
-         oSession.oRequest["User-Agent"]="lixinwei";//更改成你指定的名字
-         oSession.oRequest["Disable-Cache"] = "1";  
+           oSession.oRequest["User-Agent"]="lixinwei";//更改成你指定的名字
+           oSession.oRequest["Disable-Cache"] = "1";  
          
-      }
+        }
 
 ### Switchyplus配置  
 
