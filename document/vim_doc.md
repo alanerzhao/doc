@@ -191,3 +191,24 @@ map <F4> :Vimwiki2HTML<cr>
 
 
     当然,用grep同样可以达到这个效果,不过用vimgrep的好处就是与系统无关,能适用于所有系统的VIM,而且能自动识别文件编码和换行.嘿嘿,VIM就是你用的越多就越能感觉到它的强大了.
+    gD 跳到第一次引用的地方
+  2 gd 只在当前函数查找
+  3 marker 建立标记 m1 建立1 m2 建立2 使用`1 `2跳转
+  4 makes 查看标记
+  5 gf 跳到连接的文件
+  6 ctrl + z stop vim  open shell
+  7 fg commint 打开 stop vim-
+  8 
+  9 将空格转化为制表符的命令则恰好相反：
+ 10 
+ 11         :set noexpandtab
+ 12                 :%retab!
+ 13 
+ 14 制表符转空格
+ 15                 :set expandtab
+ 16                         :%retab
+ 17 
+ 18 排版注释
+ 19 gq]/
+ 20 
+ 21 :command 列出用户定义命令               
