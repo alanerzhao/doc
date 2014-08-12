@@ -1,7 +1,11 @@
 Mobile web page  
 ================= 
 ---------
-	
+去除阴影	
+	input, textarea, button, a,label{
+-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
 以下是规范建议，均是日常在开发当中的的一些经验，仅供参考。
 
 ## 一.头部声明 ##
