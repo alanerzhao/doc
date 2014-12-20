@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/base.css" />
+	<style type="text/css">
+		.dialog {
+			width: 400px;
+			height: 300px;
+			background: #fff;
+			border:1px solid #eee;
+			border-radius: 4px;
+			display:none;
+			z-index:9999;
+			position: fixed;
+			_position:absolute;
+		}
+		.dialog-hd {
+			height: 50px;
+			line-height: 50px;
+			color: #535353;
+			position: relative;
+			font-size: 18px;
+			background: #F9F9F9;
+			padding-left: 20px;
+		}
+		.dialog-hd-close {
+			background: url("./img/dialog_close.png") no-repeat;
+			height: 24px;
+			width: 24px;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+		}
+		.dialog-ft {
+			text-align: center;
+		}
+		.dialog-ft-btn {
+			padding: 10px 40px;
+			height: 40px;
+			text-align: center;
+			border-radius: 4px;
+			background: #60B142;
+			font-size: 16px;
+			line-height: 40px;
+			color: #fff;
+			
+		}
+		.dialog-bd-mess {
+			font-size: 18px;
+			color : #60b142;
+			margin-left: 20px;
+		}
+		.dialog-bd-status {
+			background: url("./img/dialog_status.png") no-repeat;
+			width: 64px;
+			height: 64px;
+			display: inline-block;
+			*display: inline;
+			*zoom: 1;
+			vertical-align:middle;
+		}
+		.wran .dialog-bd-status {
+			background-position: 0 -152px;
+		}
+		.wran .dialog-bd-mess {
+			color: #ff7e00;
+		}
+		.error .dialog-bd-status {
+			background-position: 0 -77px;
+		}
+		.error .dialog-bd-error {
+			color: #d93929;
+		}
+		.error .dialog-bd-mess {
+			color: #d93929;
+		}
+		.dialog-bd-info {
+			border-bottom: 1px solid #f9f9f9;
+			padding:20px 0;
+			margin: 10px 40px 20px;
+			text-align: center;
+		}
+		.dialog-bd-more {
+			color: #878787;
+			padding: 0 40px;
+			margin-bottom: 20px;
+		}
+.dialog-mask {
+	background-color:#ccc;
+	opacity: 0.8;
+	z-index: 666;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+	</style>
+</head>
+<body>
+	<input type="button" value="dd" class="btn" />
+	<input type="button" value="dd1" class="btn1" />
+	<input type="button" value="dd2" class="btn2" />
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<select id="" name=""><option value=""></option></select>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+<p>ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo</p>
+	<!--<div class="j_dialog dialog">-->
+		<!--<div class="dialog-hd">-->
+			<!--<h3>提示信息</h3>-->
+			<!--<a class="dialog-hd-close" href="javascript:;"></a>-->
+		<!--</div>-->
+		<!--<div class="dialog-bd">-->
+			<!--<div class="dialog-bd-info clearfix">-->
+				<!--<span class="dialog-bd-status"></span>-->
+				<!--<span class="dialog-bd-mess">你发表的评论已经成功</span>-->
+	<!--<div class="j_dialog dialog">-->
+		<!--<div class="dialog-hd">-->
+			<!--<h3>提示信息</h3>-->
+			<!--<a class="dialog-hd-close" href="javascript:;"></a>-->
+		<!--</div>-->
+		<!--<div class="dialog-bd">-->
+			<!--<div class="dialog-bd-info clearfix">-->
+				<!--<span class="dialog-bd-status"></span>-->
+				<!--<span class="dialog-bd-mess">你发表的评论已经成功</span>-->
+			<!--</div>-->
+			<!--<p class="dialog-bd-more">不论你是你无牌还是扁平控，不论你走复古风还是爱未来感只要你的创意好</p>-->
+		<!--</div>-->
+		<!--<div class="dialog-ft">-->
+			<!--<a class="dialog-ft-btn j_btn" href="javascript:;">确定</a>-->
+		<!--</div>-->
+	<!--</div>-->
+<script type="text/javascript" src="./core/jquery.js"></script>
+<script type="text/javascript" src="./mod/dialog.js"></script>
+	<script type="text/javascript">
+		$(".btn").click(function () {
+			var _this = $(this);
+		$.TipsDialog({
+			mask: true, //遮罩层
+			multiple: false, //是否实例
+			timeout: 2,  //秒
+			tipsCont: "asdasdasd",//提示内容
+			tipsInfo: "提示信息",
+			rightImg: "", //默认ok wran || error 
+			size : true,
+			autoHide: false, //自动关闭
+			closeBack: function (current) {//关闭按钮的回调
+				//console.log(current);
+				//$(current).fadeOut();
+			}
+			});
+		})
+			$(".btn1").click(function () {
+			var _this = $(this);
+		$.TipsDialog({
+			mask: true, //遮罩层
+			multiple: false, //是否实例
+			timeout: 2,  //秒
+			tipsCont: "asdasdasd",//提示内容
+			rightImg: "wran", //默认ok wran || error 
+			autoHide: false, //自动关闭
+			closeBack: function (current) {//关闭按钮的回调
+			//	console.log(current)
+				$(current).hide();
+			}
+			});
+			})
+		$(".btn2").click(function () {
+			var _this = $(this);
+		$.TipsDialog({
+			mask: true, //遮罩层
+			multiple: false, //是否实例
+			timeout: 2,  //秒
+			tipsCont: "asdasdasd",//提示内容
+			rightImg: "error", //默认ok wran || error 
+			autoHide: false, //自动关闭
+			closeBack: function (current) {//关闭按钮的回调
+			//	console.log(current)
+			}
+			});
+		})
+	</script>
+</body>
+</html>

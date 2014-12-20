@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+ #photo-1{
+        background-image: url('http://farm2.static.flickr.com/1047/618175800_09d9f0d704.jpg');
+      }
+      #photo-1.hover{
+        background-image: url('http://farm3.static.flickr.com/2066/1997997751_4eed467567.jpg');
+      }
+      #photo-2{
+        background-image: url('http://farm3.static.flickr.com/2158/2433613083_9a737679bd.jpg');
+      }
+      #photo-2.hover{
+        background-image: url('http://farm4.static.flickr.com/3362/3252938723_64c586a31e.jpg');
+      }
+      #photo-3{
+        background-image: url('http://farm4.static.flickr.com/3435/3264729331_a769f2e67d.jpg');
+      }
+      #photo-3.hover{
+        background-image: url('http://farm4.static.flickr.com/3616/3522284481_a46cbc9486.jpg');
+      }
+.photo {
+height: 300px;
+width: 300px;
+float: left;
+margin: 0 10px 0 0;
+}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><span id="photo-1" class="photo"></span></li>
+		<li><span id="photo-2" class="photo"></span></li>
+		<li><span id="photo-3" class="photo"></span></li>
+	</ul>
+	<script type="text/javascript" src="./core/jquery.js"></script>
+	<script type="text/javascript">
+(function($) {
+  var cache = [];
+  // Arguments are image paths relative to the current page.
+  $.preLoadImages = function() {
+    var args_len = arguments.length;
+    for (var i = args_len; i--;) {
+      var cacheImage = document.createElement('img');
+      cacheImage.src = arguments[i];
+	  cache.push(cacheImage);
+	}
+	console.log(cacheImage);
+  }
+})(jQuery);
+ // wrap everything in document ready event
+      $( function(){
+		  console.log($("#photo-1,#photo-2,#photo-3"));
+        // hover effect - change background image
+        $( '.photo' ).hover( function(){
+          $( this ).addClass( 'hover' );
+        }, function(){
+          $( this ).removeClass( 'hover' );
+        });
+      
+        // THE ACTUAL DEMO CODE
+		$.preLoadImages('http://farm3.static.flickr.com/2066/1997997751_4eed467567.jpg',
+		  'http://farm4.static.flickr.com/3362/3252938723_64c586a31e.jpg',
+		  'http://farm4.static.flickr.com/3616/3522284481_a46cbc9486.jpg'
+		);
+      });
+	</script>
+</body>
+</html>

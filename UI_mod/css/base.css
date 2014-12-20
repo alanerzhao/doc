@@ -1,0 +1,106 @@
+/* Retset */
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{ font:12px/1.5 "Microsoft YaHei",tahoma,arial,"Hiragino Sans GB",\5b8b\4f53; color:#333;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+table{ border-collapse:collapse;border-spacing:0;}
+ol,ul{ list-style:none;}
+fieldset,img{ border:0 none;}
+:focus { outline:0;}
+a{ text-decoration:none; color: #333;}
+a:hover { text-decoration:underline; color:#ff4e00  !important;}
+/* 高亮选中 */
+/*::-moz-selection {background:#08c;color:#fff;}*/
+/*::selection {background:#08c;color:#fff;}*/
+
+/*::-moz-placeholder {color: #aaa;}*/
+/*::-webkit-input-placeholder {color: #aaa;}*/
+/*::-ms-input-placeholder {color:#aaa;}*/
+:focus{outline:none;}
+
+/*功能性CSS*/
+.clearfix:after { content:'\0020';display:block;clear:both;height:0;}
+.clearfix {*zoom:1;}
+
+/*向左向右*/
+.fn-right{float:right;}
+.fn-left{float:left;}
+
+/*显示隐藏*/
+.fn-hide { display:none;}
+.fn-show { display:block;}
+
+.fn-invisible {visibility:hidden;}
+.fn-affix {position:fixed;top:0;}
+
+/*省略号*/
+.fn-ell { text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+
+/*内联块*/
+.fn-inb { display:inline-block; vertical-align:middle; *display:inline; *zoom:1;}
+
+/*强制文本换行*/
+.fn-wrap { word-wrap:break-word;word-break:break-all;}
+
+/*grid*/
+.grid-970 {
+    margin: 0 5px 10px 5px;
+    width: 970px;
+}
+.top,
+.game,
+.news,
+#video,
+#mobile-game,
+#ios-game,
+#and-game,
+#game-industry,
+.gril {
+    margin: 0 5px 10px 5px;
+    width: 970px;
+}
+.container {
+    width: 980px;
+    margin: 0 auto;
+}
+.grid-9 {
+    width: 305px;
+}
+.grid-14 {
+    width: 480px;
+}
+
+/*ui base */
+#MF .no-bd {
+  border:0 none;
+}
+/** ui **/
+.ui-line {
+  margin: 0 2px;
+  font-weight:normal;
+  font-family: sans-serif;
+}
+.ui-tring {
+  border-color: #ccc #333 #333;
+  border-style:solid dashed solid;
+  border-width:5px;
+  line-height:0;
+  position: absolute;
+  top: 8px;
+  left: 50px;
+  overflow: hidden;
+  display: inline-block;
+}
+.ui-more {
+  font-family:"SimSun";
+}
+.tips {
+  color: #fe6e40;
+}
+.ios-tips {
+color : #16aaff;
+}
+.and-tips {
+  color: #71bc52;
+}
+

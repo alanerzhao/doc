@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/base.css" />
+	<style type="text/css">
+		.tab {
+			width: 500px;
+			margin: 50px;
+		}
+		.tab-hd {
+			border: 1px solid #eee;
+			border-bottom:0 none;
+		
+		}
+		.tab-hd .tab-hd-item {
+			float: left;
+			padding:0 10px;
+			text-align:center;
+			width: 100px;
+			height: 30px;
+			border-right:1px solid #eee;
+			line-height: 30px;
+		}
+		.tab-hd .J_active {
+			background: #f5f5f5;
+		}
+		.tab-bd .tab-bd-item {
+			display: none;
+			padding: 25px;
+		}
+		.tab-bd .J_active {
+			display:block;
+		}
+		.tab-bd {
+			border:1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+	<div id="J1" class="J_tab tab">
+		<div class="tab-hd">
+			<ul class="clearfix">
+				<li class="tab-hd-item " data-num="1"><a href="javascript:;">tab1</a></li>
+				<li class="tab-hd-item J_active"  data-num="2"><a href="javascript:;">tab2</a></li>
+				<li class="tab-hd-item "  data-num="3"><a href="javascript:;">tab3</a></li>
+			</ul>
+		</div>
+		<div class="tab-bd">
+			<div class="tab-bd-item ">
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+			</div>
+			<div class="tab-bd-item J_active">
+				<p>fuck 好久不写逻辑乱了，代码也生疏了22！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了22！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了22！</p>
+			</div>
+			<div class="tab-bd-item ">
+				<p>fuck 好久不写逻辑乱了，代码也生疏了33！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了33！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了33！</p>
+			</div>
+		</div>
+	</div>
+	<div id="J2" class="J_tab tab">
+		<div class="tab-hd">
+			<ul class="clearfix">
+				<li class="tab-hd-item " data-num="1"><a href="javascript:;">tab1</a></li>
+				<li class="tab-hd-item J_active"  data-num="2"><a href="javascript:;">tab2</a></li>
+				<li class="tab-hd-item "  data-num="3"><a href="javascript:;">tab3</a></li>
+			</ul>
+		</div>
+		<div class="tab-bd">
+			<div class="tab-bd-item ">
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+			</div>
+			<div class="tab-bd-item J_active">tab2</div>
+			<div class="tab-bd-item">tab3</div>
+		</div>
+	</div>
+	<div id="J3" class="J_tab tab">
+		<div class="tab-hd">
+			<ul class="clearfix">
+				<li class="tab-hd-item " data-num="1"><a href="javascript:;">tab1</a></li>
+				<li class="tab-hd-item"  data-num="2"><a href="javascript:;">tab2</a></li>
+				<li class="tab-hd-item J_active"  data-num="3"><a href="javascript:;">tab3</a></li>
+			</ul>
+		</div>
+		<div class="tab-bd">
+			<div class="tab-bd-item ">
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+				<p>fuck 好久不写逻辑乱了，代码也生疏了！</p>
+			</div>
+			<div class="tab-bd-item">tab2</div>
+			<div class="tab-bd-item J_active">tab3</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./core/jquery.js"></script>
+	<script type="text/javascript" src="./mod/tab.js"></script>
+	<script type="text/javascript">
+		$.tab("#J1",{auto:true});
+		$.tab("#J2",{eventtyle:"mouseover"});
+		$.tab("#J3");
+	</script>
+</body>
+</html>

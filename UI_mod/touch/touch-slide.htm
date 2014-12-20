@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+	.swipe {
+	  overflow: hidden;
+	  visibility: hidden;
+	  width:640px;
+	  height: 400px;
+	  position: relative;
+	}
+	.swipe-wrap {
+	  overflow: hidden;
+	  position: relative;
+	}
+	.swipe-wrap > div {
+	  float:left;
+	  width:100%;
+	  position: relative;
+  }
+  img {
+	width: 640px;
+  }
+	</style>
+</head>
+<body>
+	<div id='slider' data-slde='{"speed":400,"auto":3000}' class='swipe'>
+	  <div class='swipe-wrap'>
+		<div><img src="./explorations1.jpg" alt="1" /></div>
+		<div><img src="./explorations2.jpg" alt="2" /></div>
+		<div><img src="./explorations3.jpg" alt="3" /></div>
+	  </div>
+  </div>
+  <div id='slider2'  data-slde='{"speed":700,"auto":2000}' class='swipe'>
+	  <div class='swipe-wrap'>
+		  <div>
+			  <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大1</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  </ul>
+			  
+		  </div>
+		  <div>
+		   <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大2</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  </ul>
+			 
+		  </div>
+		  <div>
+		   <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大3</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  </ul>
+			 
+		  </div>
+	  </div>
+  </div>
+  <div id='slider3'  data-slde='{"speed":700,"auto":0}' class='swipe'>
+	  <div class='swipe-wrap'>
+		  <div>
+			  <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大1</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  </ul>
+			  
+		  </div>
+		  <div>
+		   <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大2</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>asdasdasd阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  </ul>
+			 
+		  </div>
+		  <div>
+		   <ul>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大3</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大iasdasid阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏大阿苏大阿苏大</li>
+			  	<li>阿苏大阿苏大阿苏asdaskd大阿苏大阿苏大</li>
+			  </ul>
+			 
+		  </div>
+	  </div>
+  </div>
+  <script type="text/javascript" src="./jquery.js"></script>
+	<script type="text/javascript" src="./swipe.js"></script>
+	<script type="text/javascript">
+		var data;
+		$(function () {
+		$(".swipe").each(function (idx,obj) {
+			var obj = $(this)[0];
+			data = $.parseJSON($(obj).attr("data-slde"));
+			console.log(data);
+	window.mySwipe = new Swipe(obj, {
+	  startSlide: 1,
+	  speed: data.time,
+	  auto: data.auto,
+	  continuous: true,
+	  disableScroll: false,
+	  stopPropagation: false,
+	  callback: function(index, elem) {
+	//	console.log(index,elem11)
+	  },
+	  transitionEnd: function(index, elem) {
+	  
+		//console.log(index,elem)
+	  }
+	});
+		})
+		})
+	/*window.mySwipe = new Swipe(document.getElementById('slider2'), {
+	  startSlide: 1,
+	  speed: 100,
+	  auto: 3000,
+	  continuous: true,
+	  disableScroll: false,
+	  stopPropagation: false,
+	  callback: function(index, elem) {},
+	  transitionEnd: function(index, elem) {}
+});*/
+/*	$(function () {
+	$(".swipe").each(function () {
+		var that = $(this);
+		var idObj = that[0];
+	window.mySwipe = new Swipe(idObj), {
+	  startSlide: 1,
+	  speed: 400,
+	  auto: 3000,
+	  continuous: true,
+	  disableScroll: false,
+	  stopPropagation: false,
+	  callback: function(index, elem) {},
+	  transitionEnd: function(index, elem) {}
+}
+	})
+});
+*/
+	</script>
+</body>
+</html>

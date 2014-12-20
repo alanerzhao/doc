@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--asdasd-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="./css/base.css" />
+	<style type="text/css">
+		.list {
+			width: 970px;
+			margin: 0 auto;
+			margin-top: 20px;
+		}
+		.list li {
+			float : left;
+			margin-right: 20px;
+			border:1px solid #eee;
+			border-radius:3px;
+			margin-bottom: 20px;
+			height: 300px;
+			width: 180px;
+			background: url("./img/load.gif") no-repeat center center;
+		}
+		.list img {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript" src="./core/jquery.js"></script>
+	<script type="text/javascript" src="./imglazyload.loadscript.js"></script>
+	<script type="text/javascript" src="./core/handlebars.js"></script>
+	<script id="tpl" type="text/x-handlebars-template">
+		<div class="list">
+			<ul class="clearfix">
+			{{#each name}}
+				<li><img src="" data-src={{this}} /></li>
+			{{/each}}
+			</ul>
+		</div>
+</script>
+
+<script type="text/javascript">
+	//用jquery获取模板
+    var tpl   =  $("#tpl").html();
+    //预编译模板
+    var template = Handlebars.compile(tpl);
+    //模拟json数据
+    var context = {
+		name: [ "http://placehold.it/180x300/ccaadd","http://placehold.it/180x300/ccbbdd",
+			    "http://placehold.it/180x300/99aa44","http://placehold.it/180x300/bbccdd",
+				"http://placehold.it/180x300/009955","http://placehold.it/180x300/ccddrr",
+				"http://placehold.it/180x300/ddccrr","http://placehold.it/180x300/aaeedd",
+				"http://placehold.it/180x300/776655","http://placehold.it/180x300/ddecdc",
+				"http://placehold.it/180x300/887799","http://placehold.it/180x300/cceedd",
+				"http://placehold.it/180x300/998877","http://placehold.it/180x300/aabbcc",
+				"http://placehold.it/180x300/778899","http://placehold.it/180x300/ccbbdd",
+				"http://placehold.it/180x300/ddccrr","http://placehold.it/180x300/eeddbb",
+				"http://placehold.it/180x300/ggbbcc","http://placehold.it/180x300/ccaa22",
+				"http://placehold.it/180x300/355667","http://placehold.it/180x300/cce112",
+				"http://placehold.it/180x300/332244","http://placehold.it/180x300/321123",
+				"http://placehold.it/180x300/224433","http://placehold.it/180x300/332299",
+				"http://placehold.it/180x300/223344","http://placehold.it/180x300/223311",
+				"http://placehold.it/180x300/443322","http://placehold.it/180x300/557722",
+				"http://placehold.it/180x300/996644","http://placehold.it/180x300/112233"
+
+
+		]
+	};
+	//asdasd
+	// add context
+	//add git demo
+    //匹配json内容
+    var html = template(context);
+	//asdas/d
+    //输入模板
+	$("body").html(html);
+	<!--$(function () {-->
+		<!--$( 'img' ).imglazyload({-->
+			<!--attr : "data-src",-->
+			<!--fadeIn : true-->
+		<!--});-->
+	<!--})-->
+	(function () {
+			var allImg = $("img"),
+				winObj = $(window),
+				cacheImg = [];
+				function eachImg () {
+					allImg.each(function (index) {
+						var _self = $(this),
+							_scrollTop = $(document).scrollTop(),
+							_top = _self.offset().top,
+							_h = winObj.height(),
+							_dataSrc = _self.attr("data-src");
+							//判断图片是否在可视区
+							if(_top < (_h +_scrollTop) && _self.power) {
+								//console.log(cacheImg.length);
+								_self.attr("src",_dataSrc).hide().fadeIn();
+								_self.power = false;
+						} 
+					})
+				};
+				eachImg();
+				winObj.bind("scroll",function () {
+					eachImg();
+				})
+				//console.log(cacheImg);
+	})()
+	</script>
+</body>
+</html>
