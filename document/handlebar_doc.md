@@ -228,3 +228,29 @@ Handlebars.registerHelper("debug", function(optionalValue) {
 })(jQuery);
 $('#content').handlebars($('#template'), { name: "Alan" });
 ```
+### QA
+后端返回的数据有时候是布尔值，这时候想要查看可以直接用三个大括号```{{{value}}}``` 这样就不会转义了
+### 子模板示例
+```js
+<script id="people-template" type="text/x-handlebars-template">
+    {{> person}}
+</script>
+<script id="person-partial" type="text/x-handlebars-template">
+  <div class="person">
+    <h2>{{first_name}} {{last_name}}</h2>
+    <div class="phone">{{phone}}</div>
+    <div class="email"><a href="mailto:{{email}}">{{email}}</a></div>
+    <div class="since">User since {{member_since}}</div>
+  </div>
+</script>
+<script type="text/javascript" charset="utf-8">
+    var _h = Handlebars;
+    var template = _h.compile($("#people-template").html())
+    var partial = _h.registerPartial("person",$("#person-partial").html())
+    var data = {
+        "first_name":"Asdasd"
+    }
+    $(document.body).append(template(data))
+</script>
+```
+
