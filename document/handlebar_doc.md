@@ -253,4 +253,19 @@ $('#content').handlebars($('#template'), { name: "Alan" });
     $(document.body).append(template(data))
 </script>
 ```
+```js
+var source = "<ul>{{#people}}<li>{{> link}}</li>{{/people}}</ul>";  
+Handlebars.registerPartial('link', '<a href="/people/{{id}}">{{name}}</a>')  
+var template = Handlebars.compile(source);  
+var data = { "people": [  
+    { "name": "Alan", "id": 1 },
+    { "name": "Yehuda", "id": 2 }
+  ]};
 
+template(data);
+// Should render:
+// <ul>
+//   <li><a href="/people/1">Alan</a></li>
+//   <li><a href="/people/2">Yehuda</a></li>
+// </ul>
+```
