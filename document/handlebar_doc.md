@@ -269,3 +269,110 @@ template(data);
 //   <li><a href="/people/2">Yehuda</a></li>
 // </ul>
 ```
+###　自定义辅助函数
+* 块级和内联级
+```js
+Handlebars.registerHelper ("theNameOfTheHelper", function (theScore) {
+    console.log("Grade: " + theScore );
+    var userGrade = "C";
+ndlebars自动在回调函数中添加了一个可选择对象作为最后一个参数。这个可选择对象拥有一个fn方法，一个hash对象，以及一个inverse方法。
+
+options.fn方法：
+
+fn方法接收一个对象（你的数据）作为它在自定义辅助函数块模板中作为上下文来使用的参数。你可以传递任何数据对象，或者如果你想使用引用模板的同样的上下文，你可以使用this。
+
+下面用一个例子来说明。我们将使用一个包含得分数据的数组（最后会把所有的得分加起来）：
+
+var contextObj = [{firstName: "Kapil", lastName:"Manish", score:[22, 34, 45, 67]}, {firstName: "Bruce", lastName:"Kasparov", score:[10, 34, 67, 90]}];   
+在这里我们用userScore块辅助函数设定了模板，定义如下所示：
+
+<script id="shoe-template" type="x-handlebars-template">
+ {{#userScore this}}
+<div>{{firstName}} {{lastName}}, Your Total Score is <strong>{{score}}</strong> </div>
+ {{/userScore}}
+</script>
+我们使用Handlebars.registerHelper返回发注册userScore块辅助函数。注意到参数中的最后一个项目是可选择对象，它由Handlebars自动添加，我们在此像下面代码一样来使用它：
+
+    Handlebars.registerHelper ("userScore", function (dataObject, options) {
+    var templateWithInterpolatedData = "";
+
+    for (var i = dataObject.length - 1; i >= 0; i--) {
+        //Sum user scores from the score array and replace the array with the total
+        dataObject[i].score = dataObject[i].score.reduce(function (prev, cur, index, array) {
+                    return prev + cur;
+                });
+
+//每一个数据对象数组中的对象使用options.fn来进行插值，它将处理模板中所有的HTML并将来自对象中的值插入到相应位置。    
+
+
+//这样一来你就可以理解options.fn方法的用途了：它做的实际上就是当我们将数据对象传递给函数时普通HandlebarsMibang对象所做的工作，它好从对象中提取值并将它们插入到模板里面的HTML中
+
+//如果在这个例子中没有options.fn对象，原始对象（而不是被插值的值）将会被返回
+
+
+
+templateWithInterpolatedData += options.fn (dataObject[i]);
+
+}
+
+//我们返回拥有所有数据对象插值的完整HTML字符串
+
+
+return templateWithInterpolatedData;   
+});    
+HTML的输出结果是：
+
+￼Bruce Kasparov, Your Total Score is 201
+
+Kapil Manish, Your Total Score is 168
+
+--非常重要的一点是知道块赋值函数可以被插值到模板的任意位置，我们也可以给自定义块辅助函数传递任意多个模板中的参数。
+
+options.inverse方法：
+
+inverse方法在任意块表达式总被当做else部分来使用。因此，当回调函数中的表达式为一个真值是你可以使用options.fn来返回。但是当回调函数中的表达式为假值时你可以使用options.inverse（去渲染else部分中的内容）。
+
+options.hash对象：
+
+Handlebars表达式不接收任何字符串和变量作为参数，但是你依然可以传递用空格分开的键-值对。例如：
+
+（注意到这里没有逗号来分开键-值对变量）
+
+{{#myNewHelper score=30 firstName="Jhonny" lastName="Marco"}}
+Show your HTML content here.
+{{/myNewHelper}}      
+调用拥有键-值对作为参数的Handlebars表达式将会自动添加到辅助函数回调函数的hash对象上。因此：
+
+Handlebars.registerHelper ("myNewHelper", function (dataObject, options) {
+//JSON.stringify用于序列化一个对象（为一个字符串）
+console.log(JSON.stringify (options.hash)); 
+//输出结果为：{score:30, firstName:"Jhonny", lastName:"Marco"}
+   if (theScore >= 90) {
+       return "A" ;
+   }
+   else if (theScore >= 80 && theScore < 90) {
+       return "B" ;
+   }
+   else if (theScore >= 70 && theScore < 80) {
+       return "C" ;
+   }
+   else {
+       return "D" ;
+   }
+
+});
+<script id="shoe-template" type="x-handlebars-template">
+ {{theNameOfTheHelper score}}
+</script>
+```
+*自定义块辅助函数
+
+除了自定义函数辅助函数，我们还可以添加自定义块辅助函数。当我们注册了一个自定义块辅助函数时，Handlebars自动在回调函数中添加了一个可选择对象作为最后一个参数。这个可选择对象拥有一个fn方法，一个hash对象，以及一个inverse方法。
+
+options.fn方法：
+
+fn方法接收一个对象（你的数据）作为它在自定义辅助函数块模板中作为上下文来使用的参数。你可以传递任何数据对象，或者如果你想使用引用模板的同样的上下文，你可以使用this。
+
+下面用一个例子来说明。我们将使用一个包含得分数据的数组（最后会把所有的得分加起来）：  
+
+
