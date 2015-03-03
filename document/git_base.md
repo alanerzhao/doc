@@ -185,3 +185,74 @@ Git 总结分享
 ![Alt text](http://git-scm.com/figures/18333fig0502-tn.png)
 
 ![Alt text](http://git-scm.com/figures/18333fig0511-tn.png)
+
+## Git 笔记
+* 集中式版本管理工具，都有一个单一集中管理的服务器，这是与分布式最大的区别
+* 分布式版本管理工具，并不只是提取最新的文件，而是克隆整个文件的版本
+* `Git` 使用 `SHA-1` 算法计算数据的校验,这里便知道每次回溯版本都需要你提
+  交的`commit`的`id`也就是所谓的指像历史数据的指针。
+* 文件的三种状态
+ - 已提交 `committed` 已经保存到本地数据库了
+ - 已修改 `modified`  修改了某些文件但没有提交
+ - 已暂存 `staged`    已修改的文件放在下次提交时保存
+
+ * git 恢复
+    git reset --hard version
+ 
+ * 查看记录命令高级还原
+    git reflog
+ 
+ * 查看谁动了你的代码
+    git blam file name
+ 
+ * 提交部分更改
+    git add -p
+ * 暂停
+    git stash
+    git stash apply
+ 
+ * 检查丢失提交
+    git fsck --lost-found
+
+     cherry-pick从另一个分支里选出单独的一个提交，然后合并到当前分支。
+     如果你正并行工作在两个或者更多的分支上，你也许会发现一个存在于所有分支上的bug。
+     如果你解决了一个分支上的这个bug，你可以拣选这个对应的提交应用到其他分支上，而不会弄乱其他文件或者提交
+     git cherry-pick [commit_hash]]
+
+
+    Note :分支搞懂了，你在增加功能的时候新建一个分支，然后提交这个功能分支， 另一个开发人员，pull这个分支下来代码是代你这个功能，
+    如果有问题，需要上线，那直接在拉下master没有问题的主分支。如果功能测试通过，后端人员合并开发分支到master
+    而我下次再写代码时，可以先更新下我的主分支，这样拿到新版本的代码，再开发时，和上面操作一样。
+    如果希望在克隆的时候，自己定义要新建的项目目录名称，可以在上面的命令末尾指定新的名字：
+
+    $ git clone git://github.com/schacon/grit.git mygrit
+
+    要养成一开始就设置好 .gitignore 文件的习惯，以免将来误提交这类无用的文件。
+
+文件 .gitignore 的格式规范如下：
+
+所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。
+可以使用标准的 glob 模式匹配。
+匹配模式最后跟反斜杠（/）说明要忽略的是目录。
+要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。
+请注意，单单 git diff 不过是显示还没有暂存起来的改动
+跳过使用暂存区域
+git commit -am
+
+只从仓库移除
+git rm --cached readme.txt
+
+修改最后一次提交
+有时候我们提交完了才发现漏掉了几个文件没有加，或者提交信息写错了。想要撤消刚才的提交操作，可以使用 --amend 选项重新提交：
+
+$ git commit --amend
+使用时需要先add所需要的文件再commit
+关联远程仓库第一次需要加-u
+git 恢复
+git reset --hard version
+
+查看记录命令高级还原
+git reflog
+
+
+

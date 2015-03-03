@@ -68,41 +68,28 @@ sass、Compass 安装使用
     @import module2
 
     2.监听sass文件，发布sourcemap到指定的目录
+
     //单文件监听
         sass --watch --compass --sourcemap src/sass/file.sass:file.css
 
     //多文件监听
         sass --watch --compass --sourcemap src/sass:build/css
 
+    //将css 转成scss
+        sass-convert style.css style.scss
+
+    //解析后的格试设置 `--style` 四种取值分别为：nested，'expanded'，compact，compressed
+        sass --watch style.scss:style.css --style compact
+        sass --watch style.scss:style.css --sourcemap
+        sass --watch style.scss:style.css --style expanded --sourcemap
+        sass --watch style.scss:style.css --debug-info
+    // 工作中使用的`command`
+        sass --watch --sourcemap --style expanded --compass sass:css
+
     3.sass和scss互相转换
       sass-convert style.sass style.scss
       sass0cibvert style.scss style.sass
-    4.
 
-    sass 使用示例
-    
-    1.引入一个sass
-      example  @import 'tool';
-
-    2.引入一个css TODO ( 引入外部css文件 不建议用这种方式引用单独的css因为也会靠成下载)
-      example  @import 'normalize.css
-      example  @import '../../src/sass/mobile.base.css';
-
-    3.引入compass框架
-      example @import 'compass/css3';
-
-    4.使用代码块混合 (mixin)
-     example @include flexbox()
-
-    QA 问题
-    
-    1.头部声明否则会有编码问题
-    2.属性结束注意";"
-
-
-
-
-
-
-
+    4.使用compass validate检查你的css
+       如果没有安装会提示你安装
 
