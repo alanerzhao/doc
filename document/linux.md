@@ -59,3 +59,11 @@ wget -r -p -np -k http://xxx.com/xxx
     ubuntu 安装 openSSH-server  
     ```sudo apt-get install openssh-server```
 
+### httpie
+
+查看请求头
+http bbs.mofang.com --headers
+查看请求主体
+http bbs.mofang.com --body
+
+

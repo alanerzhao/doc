@@ -1,0 +1,390 @@
+define("a",["jquery","handlebars"],function(require, exports, module) {
+
+    var $ = require("jquery");
+    var _h = require("handlebars")
+    var _ = {}
+//弹层基类
+function Popup () {
+    this.box = null;
+    this.config =  {
+        title: "default",
+        content : "defaultCont",
+        status: true,
+        panel: "",
+        point: {
+            x:10,
+            y:20,
+            width:400,
+            height:300
+        }
+    }
+
+    this.topics = {},
+    this.subUid = -1,
+    this.pubsubz ={};
+
+}
+Popup.prototype = {
+
+    publish : function ( topic, args ) {//{{{
+        
+        var that = this
+        if (!this.topics[topic]) {
+            return false;
+        }
+
+        setTimeout(function () {
+            var subscribers = that.topics[topic],
+                len = subscribers ? subscribers.length : 0;
+
+            while (len--) {
+                subscribers[len].func(topic, args);
+            }
+        }, 0);
+        return true;
+
+    },//}}}
+    subscribe : function ( topic, func ) {//{{{
+
+        if (!this.topics[topic]) {
+            this.topics[topic] = [];
+        }
+
+        var token = (++this.subUid).toString();
+        this.topics[topic].push({
+            token: token,
+            func: func
+        });
+        return token;
+    },//}}}
+    unsubscribe :function ( token ) {//{{{
+        for (var m in topics) {
+            if (this.topics[m]) {
+                for (var i = 0, j = this.topics[m].length; i < j; i++) {
+                    if (this.topics[m][i].token === token) {
+                        this.topics[m].splice(i, 1);
+                        return token;
+                    }
+                }
+            }
+        }
+        return false;
+    },//}}}
+    getPubSubz : function(){//{{{
+        return this.pubsubz;
+    },//}}}
+    
+    //初始化
+    init: function () { //{{{
+        console.log(">>> Person >> this.init")
+    },//}}}
+    //渲染
+    render: function (container) {//{{{
+
+       this.init.call(this,arguments)
+        //this.init()
+        $(container||document.body).append(this.box);
+        
+        this.bind()
+        this.position()
+        this.show()
+
+        console.log(">>this.render")
+    },//}}}
+    position : function () {//{{{
+
+        var win= $(window),
+            doc = $(document);
+
+        var point = this.config.point;
+
+        var win = {
+            T: win.scrollTop(),
+            L: win.scrollLeft(),
+            H: win.height(),
+            W: win.width()
+        },
+        doc = {
+            H : doc.height(),
+            W : doc.width()
+        };
+        obj = {
+            H: this.box.outerHeight(true),
+            W: this.box.outerWidth(true),
+            L: this.box.offset().left,
+            T: this.box.offset().top
+        };
+
+        this.box.css({
+            left: point.x || ((win.W - obj.W) / 2) + win.L,
+            top: point.y || ((win.H - obj.H) / 2) + win.T
+        });
+        //this.mask.css({
+            //height: Math.max(win.H ,doc.H),
+            //width: Math.max(win.W, doc.W)
+        //});
+    },//}}}
+    show: function () {//{{{
+        this.box.show()
+    },//}}}
+    hide: function () {//{{{
+        this.box.hide()
+    },//}}}
+    autoHide: function (time) {//{{{
+        var self = this;
+        self.globalTime = setTimeout(function() {
+            self.hide();
+        },time || 1500)
+    },//}}}
+    //绑定事件
+    bind: function () {//{{{
+        console.log(">>> Person >> this.bind")
+    },//}}}
+    //销毁组件
+    destroy: function () {//{{{
+
+        this.destructor();
+        this.box.off();
+        //TODO 这里是remove也就是把元素删除，导致第二次点击元素消失这里注释
+        this.box.remove();
+        console.log(">>> Person >> this.destroy")
+    },//}}}
+    //对象销毁
+    destructor: function () {//{{{
+        console.log(">>> Person >> this.destructor")
+    }//}}}
+}
+ // Extend a given object with all the properties in passed-in object(s).
+  // Shortcut function for checking if an object has a given property directly
+  // on itself (in other words, not on a prototype).
+  _.has = function(obj, key) {//{{{
+    return hasOwnProperty.call(obj, key);
+  };//}}}
+  _.extend = function(obj) {//{{{
+    if (!_.isObject(obj)) return obj;
+    var source, prop;
+    for (var i = 1, length = arguments.length; i < length; i++) {
+      source = arguments[i];
+      for (prop in source) {
+        if (hasOwnProperty.call(source, prop)) {
+            obj[prop] = source[prop];
+        }
+      }
+    }
+    return obj;
+  };//}}}
+  // Is a given variable an object?
+  _.isObject = function(obj) {//{{{
+    var type = typeof obj;
+    return type === 'function' || type === 'object' && !!obj;
+  };//}}}
+ var extend = function(protoProps, staticProps) {//{{{
+    //父类 --> Backbone.Views || Backbone.Model
+    var parent = this;
+    //子类 -->实例对象
+    var child;
+
+    // The constructor function for the new subclass is either defined by you
+    // (the "constructor" property in your `extend` definition), or defaulted
+    // by us to simply call the parent's constructor.
+    if (protoProps && _.has(protoProps, 'constructor')) {
+      child = protoProps.constructor;
+    } else {
+        // ** 子类继承父类通过改变this的指向把父类的方法都指向了child
+      child = function(){ return parent.apply(this, arguments); };
+    }
+
+    // Add static properties to the constructor function, if supplied.
+    // 静态属性添加到构造函数里
+    _.extend(child, parent, staticProps);
+
+    // Set the prototype chain to inherit from `parent`, without calling
+    // `parent`'s constructor function.
+    var Surrogate = function(){ this.constructor = child; };
+    Surrogate.prototype = parent.prototype;
+    child.prototype = new Surrogate;
+
+    // Add prototype properties (instance properties) to the subclass,
+    // if supplied.
+    if (protoProps) _.extend(child.prototype, protoProps);
+
+    // Set a convenience property in case the parent's prototype is needed
+    // later.
+    child.__super__ = parent.prototype;
+    
+    //返回子类
+    return child;
+  };//}}}
+var tpl = '<div class="popup">'+//{{{
+            '<h3 class="popup-header"> {{title}}奖励 </h3>'+
+            '<form action="" class="popup-form-post">'+
+            '<div class="popup-content">'+
+                '<span class="popup-tips">提示信息</span>'+
+                '<div class="popup-text">'+
+                    '<label for="first-money">魔币 </label>'+
+                    '<input id="first-money" name="coin" autofocus="autofocus" type="text">'+
+                '</div>'+
+                '<div class="popup-text">'+
+                    '<label for="last-jewel">魔钻 </label>'+
+                    '<input id="last-jewel" name="diamond" type="text">'+
+                '</div>'+
+                '<input type="hidden" name="uid" id="popup-uid">'+
+                '<div class="popup-textarea clearfix">'+
+                    '<label for="">奖励原因</label>'+
+                    '<textarea name="content"></textarea>'+
+                '</div>'+
+                '<div class="popup-btn clearfix">'+
+                    '<input class="J-cancel popup-cancel" value="取消" type="button">'+
+                    '<input class="J-commit popup-commit" value="确认" type="submit">'+
+                '</div>'+
+            '</div>'+
+        '</form>'+
+        '<div class="popup-footer"></div>'+
+    '</div>'//}}}
+Popup.extend = PopupConfirm.extend = extend
+
+var deletePanel = ""
+var tplData = {
+    title: "赵帅"
+}
+function PopupLayer () { }
+PopupLayer = Popup.extend({//{{{
+    init: function () {
+
+        temp = _h.compile(tpl);
+        var dd = temp(tplData);
+
+        this.box = this.config.panel || $(".delete-popup")
+        console.log(">>this.init >> alert")
+    },
+    
+    bind: function () {
+        var that = this;
+        this.box.on("click",".j_popup_btn",function () {
+            that.publish("close",1)
+            that.destroy()
+        })
+        console.log(">>this.bind")
+    },
+
+    alert: function (config) {
+
+        $.extend(this.config,config)
+
+        this.render()
+    }
+})//}}}
+
+function PopupConfirm () { }
+PopupConfirm = Popup.extend({//{{{
+     init: function () {
+
+        temp = _h.compile(tpl);
+        var dd = temp(tplData);
+
+        this.box = this.config.panel || $(".delete-confim")
+        console.log(">>this.init >> confim")
+    },
+    
+    bind: function () {
+        var that = this;
+        this.box.on("click",".j_popup_btn",function () {
+            that.publish("send","data")
+        })
+        this.box.on("click",".j_popup_cancel",function () {
+            that.publish("cancel","data")
+            that.destroy()
+        })
+        console.log(">>this.bind")
+    },
+
+     confim: function (config) {
+
+        $.extend(this.config,config)
+
+        this.render()
+    }
+
+
+})//}}}
+
+
+//new会产生多个，我不多new便可以
+
+var poplayer = new PopupLayer();
+var popupconfirm = new PopupConfirm()
+
+poplayer.subscribe("close",function(topics,data) {
+    console.log(topics,data)
+    popupconfirm.destroy()
+})
+
+popupconfirm.subscribe("cancel",function(topics,data) {
+    alert(data)
+})
+popupconfirm.subscribe("send",function(topics,data) {
+    var data = $(".delete-form").serialize()
+    console.log(data)
+    if(true) {
+        poplayer.alert()
+    }
+})
+console.dir(popupconfirm)
+/*****6类管理员操作**********/
+var adminHandle = $(".j_admin-handle")
+adminHandle.on("click","a",function () {
+    var type = $(this).attr("data-type")
+    switch (type) {
+        case 'DELETE':
+            //DELETE ();
+            //manage.publish("DELETE")
+            poplayer.alert({
+                panel:$(".delete-popup").clone()
+                //point:{
+                    //x:100,
+                    //y:200
+                //}
+            })
+            console.log(">>" + type)
+            break;
+        case 'MOVE':
+            //MOVE();
+            popupconfirm.confim({
+                //必须用克隆
+                panel: $(".delete-item").clone(),
+                    point:{
+                        title: "Asdasdasd",
+                        x:200,
+                        y:300
+                    }
+            })
+            console.log(">>" + type)
+            break;
+        case 'UPDOWN':
+            console.log(">>" + type)
+            break;
+        case 'TOP':
+            console.log(">>" + type)
+            break;
+        case 'HOT':
+            console.log(">>" + type)
+            break;
+        case 'GOOD':
+            console.log(">>" + type)
+            break;
+        case 'NORELY':
+            console.log(">>" + type)
+            break;
+        default:
+    }
+
+    //function DELETE() {
+        //var t
+    //}
+})
+})
+seajs.use("a");
+
+
+
+
